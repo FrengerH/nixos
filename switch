@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+USER=$(whoami)
+
+USERNAME_FILE=/etc/nixos/username.json
+USERNAME_FILE_ORI=./secrets/nixos/username.json
+
+if [[ ! -f "$USERNAME_FILE" ]]; then
+    sudo cp -Rf $USERNAME_FILE_ORI $USERNAME_FILE
+    sudo sed -i 's/\"defaultUser\": \"\"/\"defaultUser\": \"'${USER}'\"/' "$USERNAME_FILE"
+fi
+
+SECRETS_FILE="/home/${USER}/.config/nixos/secrets.json"
+SECRETS_FILE_ORI="./secrets/nixos/secrets.json"
+
+if [[ ! -f "$SECRETS_FILE" ]]; then
+    sudo cp -Rf $SECRETS_FILE_ORI $SECRETS_FILE
+    sudo chmod 600 $SECRETS_FILE
+fi
+
+
+# CONFIG=./configuration.nix
+# CONFIG_ORI=/etc/nixos/configuration.nix
+
+# HARDWARE=./hardware-configuration.nix
+# HARDWARE_ORI=/etc/nixos/hardware-configuration.nix
+
+# if [[ ! -f "$CONFIG" ]]; then
+#     cp $CONFIG_ORI .
+# fi
+
+# if [[ ! -f "$HARDWARE" ]]; then
+#     cp $HARDWARE_ORI .
+# fi
+
+# sed -i '/users.users.*$/,/};/d' "$CONFIG"
+
+# rm -f flake.lock
+# nix-collect-garbage
+sudo nixos-rebuild switch --flake ./#$1 --impure

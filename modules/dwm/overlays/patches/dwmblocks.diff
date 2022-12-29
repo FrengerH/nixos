@@ -1,0 +1,13 @@
+--- dwmblocks-async-ori/main.c	2022-12-01 11:21:22.001512903 +0100
++++ dwmblocks-async/main.c	2022-12-01 11:21:53.009508469 +0100
+@@ -131,8 +131,8 @@
+     buffer[j] = ' ';
+ 
+     // Trim trailing spaces
+-    while (j >= 0 && buffer[j] == ' ') j--;
+-    buffer[j + 1] = 0;
++    /* while (j >= 0 && buffer[j] == ' ') j--; */
++    /* buffer[j + 1] = 0; */
+ 
+     // Clear the pipe
+     if (bytesRead == LEN(buffer)) {
