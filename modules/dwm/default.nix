@@ -13,6 +13,8 @@ in
     hardware.pulseaudio.package = pkgs.pulseaudioFull;
     hardware.enableAllFirmware  = true;
 
+    users.users.${config.defaultUser}.extraGroups = [ "audio" ];
+
     users.defaultUserShell = pkgs.fish;
 
     services.xserver.libinput.enable = true;
