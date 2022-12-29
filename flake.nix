@@ -26,7 +26,7 @@
         modules = [
           /etc/nixos/configuration.nix
           ./modules/dwm
-          #./modules/vm
+          ./modules/vm
           #./modules/virt-manager
           ./modules/neovim
           ./modules/common

@@ -5,6 +5,10 @@ with lib;
 let
 in
   {
+    services.xserver.displayManager.autoLogin = {
+      enable = true;
+      user = config.defaultUser;
+    };
     services.qemuGuest.enable = true;
     services.spice-vdagentd.enable = true;
     fileSystems = mkIf (config.defaultUser or "" != "") {
