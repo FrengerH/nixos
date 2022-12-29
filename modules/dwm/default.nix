@@ -56,9 +56,9 @@ in
       st
       git
       feh
-      lshw
       xclip
       rink
+      brightnessctl
       lightlocker
       xorg.xrandr
       autorandr
@@ -72,7 +72,6 @@ in
       rofi
       rofiPkgs.power-menu
       rofiPkgs.launcher
-      usbutils
       cinnamon.nemo
       gnome.file-roller
     ];
