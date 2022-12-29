@@ -26,10 +26,11 @@
         modules = [
           /etc/nixos/configuration.nix
           ./modules/dwm
-          ./modules/vm
-          ./modules/virt-manager
+          #./modules/vm
+          #./modules/virt-manager
           ./modules/neovim
           ./modules/common
+          ./modules/wireguard
         ];
 
         specialArgs = { inherit inputs; };

@@ -10,10 +10,12 @@ if [[ ! -f "$USERNAME_FILE" ]]; then
     sudo sed -i 's/\"defaultUser\": \"\"/\"defaultUser\": \"'${USER}'\"/' "$USERNAME_FILE"
 fi
 
-SECRETS_FILE="/home/${USER}/.config/nixos/secrets.json"
+SECRETS_FILE_DIR="/home/${USER}/.config/nixos"
+SECRETS_FILE="${SECRETS_FILE_DIR}/secrets.json"
 SECRETS_FILE_ORI="./secrets/nixos/secrets.json"
 
 if [[ ! -f "$SECRETS_FILE" ]]; then
+    mkdir -p $SECRETS_FILE_DIR
     sudo cp -Rf $SECRETS_FILE_ORI $SECRETS_FILE
     sudo chmod 600 $SECRETS_FILE
 fi
