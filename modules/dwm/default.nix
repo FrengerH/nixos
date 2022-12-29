@@ -56,6 +56,7 @@ in
       st
       git
       feh
+      lshw
       xclip
       rink
       lightlocker
