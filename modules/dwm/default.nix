@@ -2,6 +2,7 @@
 
 let
   rofiPkgs = import ./programs/rofi.nix { pkgs = pkgs; };
+  dwmConfig = pkgs.writeText "config.def.h" (builtins.readFile ./overlays/configs/dwm.conf.h);
 in
   {
     nix.extraOptions = ''
@@ -25,10 +26,13 @@ in
     services.xserver.displayManager.lightdm.enable = true;
     services.xserver.windowManager.dwm = {
       enable = true;
+      package = (pkgs.dwm.override { conf = dwmConfig; }); 
     };
 
     services.samba.enable = true;
     services.gvfs.enable = true;
+
+    services.autorandr.enable = true;
 
     fonts.fonts = with pkgs; [
       fira-code
@@ -61,7 +65,6 @@ in
       brightnessctl
       lightlocker
       xorg.xrandr
-      autorandr
       dracula-theme
       catppuccin-gtk
       dwmblocks
@@ -74,6 +77,7 @@ in
       rofiPkgs.launcher
       cinnamon.nemo
       gnome.file-roller
+      numlockx
     ];
 
     programs = {

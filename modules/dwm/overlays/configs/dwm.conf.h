@@ -43,10 +43,10 @@ typedef struct {
     const char *name;
     const void *cmd;
 } Sp;
-const char *spcmd1[] = {"st", "-t", "st-scratchpad", "-T", "st", NULL };
-const char *spcmd2[] = {"st", "-t", "Spotify-tui", "-e", "spt", NULL };
-const char *spcmd3[] = {"st", "-t", "Calculator", "-e", "rink", NULL };
-const char *spcmd4[] = {"st", "-t", "Notes", "-e", "nvim", NULL };
+const char *spcmd1[] = {"st", "-T", "st-scratchpad", NULL };
+const char *spcmd2[] = {"st", "-T", "Spotify-tui", "-e", "spt", NULL };
+const char *spcmd3[] = {"st", "-T", "Calculator", "-e", "rink", NULL };
+const char *spcmd4[] = {"st", "-T", "Notes", "-e", "nvim", NULL };
 const char *spcmd5[] = {"pavucontrol", NULL};
 /*
 const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
