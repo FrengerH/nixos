@@ -12,11 +12,13 @@ in
           url = "https://addons.mozilla.org/firefox/downloads/file/3972752/bitwarden_password_manager-2022.6.1.xpi";
           sha256 = "3tij/Q6I3syxNUaFwM7Y1v01rx27Ez9TQekDudScxQ0=";
         })
-        #(fetchFirefoxAddon {
-        #  name = "vimium-ff"; # Has to be unique!
+        (fetchFirefoxAddon {
+          name = "vimium-ff"; # Has to be unique!
+          url = "https://addons.mozilla.org/firefox/downloads/file/2985278/vimium_ff-1.64.6.xpi";
+          sha256 = "cES9OYPlQfry5WwRcEj9woHExS5BlkcvxPnkr0LF4do=";
         #  url = "https://addons.mozilla.org/firefox/downloads/file/3898202/vimium_ff-1.67.1.xpi";
         #  sha256 = "EnQIAnSOer/48TAUyEXbGCtSZvKA4vniL64K+CeJ/m0=";
-        #})
+        })
         (fetchFirefoxAddon {
           name = "noscript"; # Has to be unique!
           url = "https://addons.mozilla.org/firefox/downloads/file/3954910/noscript-11.4.6.xpi";
