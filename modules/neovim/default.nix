@@ -3,6 +3,7 @@
 let
 in
   {
+    environment.variables.EDITOR = "nvim";
     environment.systemPackages = with pkgs; [
       clang-tools_14
       fzf
