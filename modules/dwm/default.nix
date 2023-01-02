@@ -32,6 +32,7 @@ in
     services.samba.enable = true;
     services.gvfs.enable = true;
 
+    services.acpid.enable = true;
     services.autorandr.enable = true;
 
     fonts.fonts = with pkgs; [
