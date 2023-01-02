@@ -20,6 +20,14 @@ if [[ ! -f "$SECRETS_FILE" ]]; then
     sudo chmod 600 $SECRETS_FILE
 fi
 
+NOTES_FILE_DIR="/home/${USER}/notes"
+NOTES_FILE="${NOTES_FILE_DIR}/notes.txt"
+
+if [[ ! -f "$NOTES_FILE" ]]; then
+    mkdir -p $NOTES_FILE_DIR
+    touch $NOTES_FILE
+fi
+
 
 # CONFIG=./configuration.nix
 # CONFIG_ORI=/etc/nixos/configuration.nix

@@ -2,7 +2,7 @@
 
 let
   rofiPkgs = import ./programs/rofi.nix { pkgs = pkgs; };
-  dwmConfig = pkgs.writeText "config.def.h" (builtins.readFile ./overlays/configs/dwm.conf.h);
+  dwmConfig = import ./overlays/configs/dwm.conf.nix { inherit config; inherit pkgs; };
 in
   {
     nix.extraOptions = ''
@@ -26,7 +26,7 @@ in
     services.xserver.displayManager.lightdm.enable = true;
     services.xserver.windowManager.dwm = {
       enable = true;
-      package = (pkgs.dwm.override { conf = dwmConfig; }); 
+      package = (pkgs.dwm.override { conf = dwmConfig.config; }); 
     };
 
     services.samba.enable = true;
