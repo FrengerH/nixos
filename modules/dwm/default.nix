@@ -54,6 +54,17 @@ in
       mode = "444";
     };
 
+    environment.etc."xdg/user-dirs.defaults".text = ''
+      DESKTOP=/home/${config.defaultUser}/.desktop
+      DOWNLOAD=/home/${config.defaultUser}/downloads
+      TEMPLATES=/home/${config.defaultUser}
+      PUBLICSHARE=/home/${config.defaultUser}
+      DOCUMENTS=/home/${config.defaultUser}
+      MUSIC=/home/${config.defaultUser}
+      PICTURES=/home/${config.defaultUser}
+      VIDEOS=/home/${config.defaultUser}
+    '';
+
     environment.etc."dwm/autostart/dwm".source = ./scripts/autostart;
     environment.etc."wallpaper/wallpaper.jpg".source = ./theme/wallpaper.jpg;
 
@@ -79,6 +90,7 @@ in
       cinnamon.nemo
       gnome.file-roller
       numlockx
+      xdg-user-dirs
     ];
 
     programs = {

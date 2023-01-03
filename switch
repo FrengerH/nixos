@@ -37,4 +37,5 @@ fi
 
 # rm -f flake.lock
 # nix-collect-garbage
+sudo nix-channel --update
 sudo nixos-rebuild switch --flake ./#$1 --impure
