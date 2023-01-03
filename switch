@@ -21,8 +21,8 @@ fi
 PROJECT_DIR="/home/${USER}/projects"
 NOTES_FILE_DIR="/home/${USER}/notes"
 if [[ $1 == "work" ]]; then
-    echo "Work"
-    NOTES_FILE_DIR="/home/${USER}/projects/notes"
+    PROJECT_DIR="/home/${USER}/work/projects"
+    NOTES_FILE_DIR="/home/${USER}/work/notes"
 fi
 
 if [[ ! -f "$PROJECT_DIR" ]]; then
