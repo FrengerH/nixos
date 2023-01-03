@@ -31,6 +31,21 @@ in
         })
       ];
       extraPolicies = {
+        Bookmarks = [
+          {
+            "Title" = "Nixos packages";
+            "URL" = "https://search.nixos.org/packages";
+            "Favicon" = "https://nixos.org/favicon.png";
+            "Placement" = "menu";
+            "Folder" = "General";
+          }
+          {
+            "Title" = "Nixos gh";
+            "URL" = "https://github.com/NixOS/nixpkgs";
+            "Placement" = "menu";
+            "Folder" = "General";
+          }
+        ];
         CaptivePortal = false;
         DisableFirefoxStudies = true;
         DisablePocket = true;
