@@ -168,6 +168,10 @@ in
             "browser.compactmode.show": {
               "Value": true,
               "Status": "default"
+            },
+            "browser.toolbars.bookmarks.visibility": {
+              "Value": "never",
+              "Status": "default"
             }
           }
         '';
