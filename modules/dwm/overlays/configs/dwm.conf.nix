@@ -2,7 +2,7 @@
 
 let 
   startupScript = pkgs.writeShellScriptBin "startupScript" (builtins.readFile ../../scripts/tmux-start.sh); 
-  notesFile = "/home/${config.defaultUser}/notes/notes.txt";
+  notesFile = "${config.notesDir}/notes.txt";
 in {
   config = ''
     

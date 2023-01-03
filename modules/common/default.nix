@@ -10,10 +10,16 @@ in
         default = null;
         description = lib.mdDoc "Default username";
       };
+      notesDir = mkOption {
+        type = with lib.types; nullOr str;
+        default = null;
+        description = lib.mdDoc "Default notes directory";
+      };
     };
 
     config = {
       defaultUser = userConf.defaultUser;
+      notesDir = "/home/${config.defaultUser}/notes";
 
       services.autorandr.profiles = {
         "default" = {
