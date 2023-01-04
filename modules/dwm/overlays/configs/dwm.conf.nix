@@ -133,7 +133,7 @@ in {
     static const char *roficmd[]          = { "launcher", NULL };
     static const char *powermenucmd[]     = { "power-menu", NULL };
     static const char *termcmd[]          = { "st", "-T", "st", "-e", "${startupScript}/bin/startupScript", NULL };
-    static const char *browsercmd[]       = { "firefox-esr", NULL };
+    static const char *browsercmd[]       = { "firefox", NULL };
     static const char *filescmd[]         = { "nemo", NULL };
     static const char *flameshotcmd[]     = { "flameshot", "gui", NULL };
     /* static const char *pavuctrlcmd[]   = { "pavucontrol", NULL }; */
@@ -177,7 +177,6 @@ in {
         { MODKEY,                XK_m,                          setmfact,       {.f = -0.05} },
         { MODKEY,                XK_r,                          spawn,          {.v = roficmd } },
         { MODKEY,                XK_q,                          spawn,          {.v = powermenucmd } },
-        /* { MODKEY,                XK_v,                          spawn,          {.v = pavuctrlcmd } }, */
         { MODKEY,                XK_x,                          killclient,     {0} },
         { MODKEY,                XK_Tab,                        focusstack,     {.i = +1 } },
         { MODKEY,                XK_Return,                     spawn,          {.v = termcmd } },
@@ -199,7 +198,6 @@ in {
           /*{ MODKEY|ShiftMask,      XK_h,                          layoutscroll,   {.i = -1 } },
             { MODKEY|ShiftMask,      XK_l,                          layoutscroll,   {.i = +1 } },*/
 
-        /* { MODKEY|ControlMask,    XK_r,                          self_restart,   {0} }, */
         { MODKEY|ControlMask,    XK_Return,                     zoom,           {0} },
         { MODKEY|ControlMask,    XK_Tab,                        view,           {0} },
           /*{ MODKEY|ControlMask,    XK_i,                          incnmaster,     {.i = +1 } },
