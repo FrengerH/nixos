@@ -2,6 +2,8 @@
 
 let 
   startupScript = pkgs.writeShellScriptBin "startupScript" (builtins.readFile ../../scripts/tmux-start.sh); 
+  muteMic = pkgs.writeShellScriptBin "muteMic" (builtins.readFile ../../scripts/toggle_input.sh); 
+  muteAudio = pkgs.writeShellScriptBin "muteAdio" (builtins.readFile ../../scripts/toggle_output.sh); 
   notesFile = "${config.notesDir}/notes.txt";
 in {
   config = ''
@@ -138,8 +140,8 @@ in {
 
     static const char *upvol[]   = { "pactl", "set-sink-volume", "0", "+3%",     NULL };
     static const char *downvol[] = { "pactl", "set-sink-volume", "0", "-3%",     NULL };
-    static const char *mutevol[] = { "amixer", "set", "Master", "toggle",  NULL };
-    static const char *mutemic[] = { "pactl", "set-source-mute", "alsa_input.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__hw_sofhdadsp_6__source", "toggle",  NULL };
+    static const char *mutevol[] = { "${muteAudio}/bin/muteAudio",  NULL };
+    static const char *mutemic[] = { "${muteMic}/bin/muteMic",  NULL };
 
     static const char *upbrightness[]   = { "brightnessctl", "--device=intel_backlight", "set", "+2%", NULL };
     static const char *downbrightness[] = { "brightnessctl", "--device=intel_backlight", "set", "2%-", NULL };
