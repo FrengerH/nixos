@@ -139,8 +139,8 @@ in {
     /* static const char *pavuctrlcmd[]   = { "pavucontrol", NULL }; */
     static const char *lockcmd[]          = { "light-locker-command", "-l", NULL };
 
-    static const char *upvol[]   = { "${setVolume}/bin/setVolume", "+3%",     NULL };
-    static const char *downvol[] = { "${setVolume}/bin/setVolume", "-3%",     NULL };
+    static const char *upvol[]   = { "${setVolume}/bin/setVolume", "+3",     NULL };
+    static const char *downvol[] = { "${setVolume}/bin/setVolume", "-3",     NULL };
     static const char *mutevol[] = { "${muteAudio}/bin/muteAudio",  NULL };
     static const char *mutemic[] = { "${muteMic}/bin/muteMic",  NULL };
 
