@@ -8,5 +8,5 @@ VOLUME=`pactl list sinks | grep -A 8 "$FIRST_SINK" | grep "Volume:" | cut -b22- 
 
 for SINK in $SINKS
 do
-    pactl set-sink-volume $SINK $VOLUME%
+    pactl set-sink-volume $SINK "$(($VOLUME $1))"%
 done
