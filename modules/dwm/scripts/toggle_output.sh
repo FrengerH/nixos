@@ -8,6 +8,5 @@ UNMUTED=`pactl list sinks | grep -A 8 "$FIRST_SINK" | grep "Mute: no" | wc -l`
 
 for SINK in $SINKS
 do
-    # printf $SINK
     pactl set-sink-mute $SINK $UNMUTED
 done
