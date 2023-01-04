@@ -4,6 +4,7 @@ let
   startupScript = pkgs.writeShellScriptBin "startupScript" (builtins.readFile ../../scripts/tmux-start.sh); 
   muteMic = pkgs.writeShellScriptBin "muteMic" (builtins.readFile ../../scripts/toggle_input.sh); 
   muteAudio = pkgs.writeShellScriptBin "muteAudio" (builtins.readFile ../../scripts/toggle_output.sh); 
+  setVolume = pkgs.writeShellScriptBin "setVolume" (builtins.readFile ../../scripts/set_volume.sh); 
   notesFile = "${config.notesDir}/notes.txt";
 in {
   config = ''
@@ -138,8 +139,8 @@ in {
     /* static const char *pavuctrlcmd[]   = { "pavucontrol", NULL }; */
     static const char *lockcmd[]          = { "light-locker-command", "-l", NULL };
 
-    static const char *upvol[]   = { "pactl", "set-sink-volume", "0", "+3%",     NULL };
-    static const char *downvol[] = { "pactl", "set-sink-volume", "0", "-3%",     NULL };
+    static const char *upvol[]   = { "${setVolume}/bin/setVolume", "+3%",     NULL };
+    static const char *downvol[] = { "${setVolume}/bin/setVolume", "-3%",     NULL };
     static const char *mutevol[] = { "${muteAudio}/bin/muteAudio",  NULL };
     static const char *mutemic[] = { "${muteMic}/bin/muteMic",  NULL };
 
