@@ -3,7 +3,7 @@
 let 
   startupScript = pkgs.writeShellScriptBin "startupScript" (builtins.readFile ../../scripts/tmux-start.sh); 
   muteMic = pkgs.writeShellScriptBin "muteMic" (builtins.readFile ../../scripts/toggle_input.sh); 
-  muteAudio = pkgs.writeShellScriptBin "muteAdio" (builtins.readFile ../../scripts/toggle_output.sh); 
+  muteAudio = pkgs.writeShellScriptBin "muteAudio" (builtins.readFile ../../scripts/toggle_output.sh); 
   notesFile = "${config.notesDir}/notes.txt";
 in {
   config = ''
