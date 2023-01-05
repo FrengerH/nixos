@@ -73,6 +73,7 @@ in
         nmap
         firefox
         flameshot
+        direnv
       ];
 
       nixpkgs.overlays = map import [ 
