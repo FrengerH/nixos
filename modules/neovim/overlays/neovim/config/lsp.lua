@@ -38,6 +38,16 @@ end
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+nvim_lsp['psalm'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
+nvim_lsp['intelephense'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
 nvim_lsp['pylsp'].setup {
     on_attach = on_attach,
     capabilities = capabilities,
