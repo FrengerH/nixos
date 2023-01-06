@@ -35,6 +35,11 @@ if [[ ! -f "$NOTES_FILE" ]]; then
     touch $NOTES_FILE
 fi
 
+DIRENV_FILE="/home/$USER/.direnvrc"
+if [[ ! -f "$DIRENV_FILE" ]]; then
+    echo "source /run/current-system/sw/share/nix-direnv/direnvrc" > $DIRENV_FILE
+fi
+
 # rm -f flake.lock
 # nix-collect-garbage
 sudo nix-channel --update
