@@ -21,6 +21,25 @@ in
       defaultUser = userConf.defaultUser;
       notesDir = "/home/${config.defaultUser}/notes";
 
+      nix.settings.auto-optimise-store = true;
+
+      environment.systemPackages = with pkgs; [
+        git
+        gcc
+        ripgrep
+        gimp
+        nmap
+        firefox
+        flameshot
+        direnv
+        nix-direnv
+      ];
+
+      nixpkgs.overlays = map import [ 
+        ./overlays/firefox
+        ./overlays/direnv
+      ];
+      
       services.autorandr.profiles = {
         "default" = {
           fingerprint = {
@@ -62,29 +81,5 @@ in
           };
         };
       };
-
-      nix.settings.auto-optimise-store = true;
-
-      environment.systemPackages = with pkgs; [
-        git
-        gcc
-        ripgrep
-        gimp
-        nmap
-        firefox
-        flameshot
-        direnv
-        nix-direnv
-      ];
-
-      environment.pathsToLink = [
-        "/share/nix-direnv"
-      ];
-
-      nixpkgs.overlays = map import [ 
-        ./overlays/firefox
-        ./overlays/direnv
-      ];
-      
     };
 }
