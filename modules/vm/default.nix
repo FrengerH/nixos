@@ -20,11 +20,11 @@ in
         fsType = "9p";
         options = [ "trans=virtio" "version=9p2000.L" ];
       };
-      "/mnt/share" = {
-        device = "//${secrets.nas.ip}/share";
-        fsType = "cifs";
-        options = [ "username=${secrets.nas.user}" "password=${secrets.nas.password}" "domain=${secrets.nas.domain}" ];
-      };
+      # "/mnt/share" = {
+      #   device = "//${secrets.nas.ip}/share";
+      #   fsType = "cifs";
+      #   options = [ "username=${secrets.nas.user}" "password=${secrets.nas.password}" "domain=${secrets.nas.domain}" ];
+      # };
     };
   }
 
