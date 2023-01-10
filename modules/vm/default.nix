@@ -26,5 +26,40 @@ in
       #   options = [ "username=${secrets.nas.user}" "password=${secrets.nas.password}" "domain=${secrets.nas.domain}" ];
       # };
     };
+
+
+    services.autorandr.profiles = {
+        "vm-min" = {
+          fingerprint = {
+            Virtual-1 = "--CONNECTED-BUT-EDID-UNAVAILABLE--Virtual-1";
+          };
+          config = {
+            Virtual-1 = {
+              enable = true;
+              crtc = 0;
+              primary = true;
+              position = "0x0";
+              mode = "1912x988_60.00";
+              rate = "60.00";
+            };
+          };
+        };
+        "vm-max" = {
+          fingerprint = {
+            Virtual-1 = "--CONNECTED-BUT-EDID-UNAVAILABLE--Virtual-1";
+          };
+          config = {
+            Virtual-1 = {
+              enable = true;
+              crtc = 0;
+              primary = true;
+              position = "0x0";
+              mode = "1920x1080";
+              rate = "60.00";
+            };
+          };
+        };
+      };
+
   }
 
