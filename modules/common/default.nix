@@ -35,6 +35,10 @@ in
         nix-direnv
       ];
 
+      environment.pathsToLink = [
+        "/share/nix-direnv"
+      ];
+
       nixpkgs.overlays = map import [ 
         ./overlays/firefox
         ./overlays/direnv

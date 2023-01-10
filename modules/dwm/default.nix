@@ -44,6 +44,11 @@ in
     services.samba.enable = true;
     services.gvfs.enable = true;
 
+    boot = {
+      kernelModules = [ "acpi_call" ];
+      extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
+    };
+
     services.acpid.enable = true;
     services.autorandr.enable = true;
 
