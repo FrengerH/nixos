@@ -9,10 +9,11 @@ in
         experimental-features = nix-command flakes
     '';
 
-    sound.enable = false;
+    sound.enable = pkgs.lib.mkForce false;
     # hardware.pulseaudio.enable = true;
     # hardware.pulseaudio.package = pkgs.pulseaudioFull;
 
+    hardware.pulseaudio.enable = pkgs.lib.mkForce false;
     # rtkit is optional but recommended
     security.rtkit.enable = true;
     services.pipewire = {
