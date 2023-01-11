@@ -24,6 +24,17 @@ in
       #jack.enable = true;
     };
 
+    services.picom = {
+      enable = true;
+      settings = {
+        inactive-opacity = 0.8;
+        frame-opacity = 0.7;
+        inactive-opacity-override = false;
+        active-opacity = 1.0;
+        inactive-dim = 0.2;
+      };
+    };
+
     hardware.enableAllFirmware  = true;
 
     users.users.${config.defaultUser}.extraGroups = [ "audio" ];
