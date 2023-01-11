@@ -7,10 +7,11 @@
     ab="tmux switch -t base";
 
     conf="cd ~/.config";
-    projects="cd ~/projects";
-    programming="cd ~/programming";
 
     ssh="TERM=xterm-256color /usr/bin/env ssh";
+
+    j="fasd_cd -d";     # cd, same functionality as j in autojump
+
   };
   shellInit = ''
     set -gx XDG_CONFIG_HOME ~/.config/
@@ -115,6 +116,20 @@
       bind --preset -M insert \cl echo test
       #  bind --erase --preset -M insert \cl echo test
       bind -m insert v 'tmux copy-mode; commandline -f repaint-mode'
+    end
+
+    function fasd_cd -d "fasd builtin cd"
+      if test (count $argv) -le 1
+        command fasd "$argv"
+      else
+        fasd -e 'printf %s' $argv | read -l ret
+        test -z "$ret"; and return
+        test -d "$ret"; and cd "$ret"; or printf "%s\n" $ret
+      end
+    end
+
+    function update_fasd_db --on-event fish_preexec -d "fasd takes record of the directories changed into"
+        command fasd --proc (command fasd --sanitize "$argv") > "/dev/null" 2>&1
     end
 
     function fish_greeting

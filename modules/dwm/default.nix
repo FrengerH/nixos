@@ -109,6 +109,7 @@ in
       numlockx
       xdg-user-dirs
       pulseaudio
+      fasd
     ];
 
     programs = {
