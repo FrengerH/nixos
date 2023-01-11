@@ -57,7 +57,7 @@ in {
     const char *spcmd1[] = {"st", "-T", "st-scratchpad", NULL };
     const char *spcmd2[] = {"st", "-T", "Spotify-tui", "-e", "spt", NULL };
     const char *spcmd3[] = {"st", "-T", "Calculator", "-e", "rink", NULL };
-    const char *spcmd4[] = {"st", "-T", "Notes", "-e", "nvim", "${notesFile}", NULL };
+    const char *spcmd4[] = {"st", "-T", "Notes", "-g", "80x24", "-e", "nvim", "${notesFile}", NULL };
     const char *spcmd5[] = {"pavucontrol", NULL};
     /*
     const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };

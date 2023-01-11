@@ -315,8 +315,8 @@
  			c->isfloating = r->isfloating;
  			c->tags |= r->tags;
 +			if ((r->tags & SPTAGMASK) && r->isfloating) {
-+				c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2);
-+				c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2);
++				c->x = c->mon->wx + (c->mon->ww - WIDTH(c));
++				c->y = c->mon->wy + (c->mon->wh - HEIGHT(c) - 50);
 +			}
 +
  			for (m = mons; m && m->num != r->monitor; m = m->next);
@@ -1289,8 +1289,8 @@
  		return;
  	if (ISVISIBLE(c)) {
 +		if ((c->tags & SPTAGMASK) && c->isfloating) {
-+			c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2);
-+			c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2);
++			c->x = c->mon->wx + (c->mon->ww - WIDTH(c));
++			c->y = c->mon->wy + (c->mon->wh - HEIGHT(c) - 50);
 +		}
  		/* show clients top down */
  		XMoveWindow(dpy, c->win, c->x, c->y);
