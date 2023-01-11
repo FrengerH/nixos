@@ -34,7 +34,7 @@ in
         inactive-dim = 0.2;
         opacity-rule = [
           "99:class_g = 'dwm'"
-          "99:class_g = 'rofi'"
+          "99:class_g = 'Rofi'"
         ];
       };
     };
