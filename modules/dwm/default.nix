@@ -28,10 +28,14 @@ in
       enable = true;
       settings = {
         inactive-opacity = 0.8;
-        frame-opacity = 0.7;
+        frame-opacity = 1.0;
         inactive-opacity-override = false;
         active-opacity = 1.0;
         inactive-dim = 0.2;
+        opacity-rule = [
+          "99:class_g = 'dwm'"
+          "99:class_g = 'rofi'"
+        ];
       };
     };
 
