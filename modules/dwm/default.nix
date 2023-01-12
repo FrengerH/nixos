@@ -9,26 +9,9 @@ let
     { config = config.nixpkgs.config; };
 in
   {
-    boot.kernelPackages = pkgs.linuxPackages_6_0;
     nix.extraOptions = ''
         experimental-features = nix-command flakes
     '';
-
-    sound.enable = pkgs.lib.mkForce false;
-    # hardware.pulseaudio.enable = true;
-    # hardware.pulseaudio.package = pkgs.pulseaudioFull;
-
-    hardware.pulseaudio.enable = pkgs.lib.mkForce false;
-    # rtkit is optional but recommended
-    security.rtkit.enable = true;
-    services.pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
-      #jack.enable = true;
-    };
 
     services.picom = {
       enable = true;
@@ -47,13 +30,7 @@ in
 
     hardware.enableAllFirmware  = true;
 
-    users.users.${config.defaultUser}.extraGroups = [ "audio" ];
-
     users.defaultUserShell = unstable.fish;
-
-    services.xserver.libinput.enable = true;
-    services.xserver.libinput.touchpad.naturalScrolling = true;
-    services.xserver.libinput.touchpad.tapping = true;
 
     services.xserver.enable = true;
     services.xserver.displayManager = {
@@ -67,6 +44,7 @@ in
         '';
       };
     };
+    
     services.xserver.windowManager.dwm = {
       enable = true;
       package = (pkgs.dwm.override { conf = dwmConfig.config; }); 
@@ -74,14 +52,6 @@ in
 
     services.samba.enable = true;
     services.gvfs.enable = true;
-
-    boot = {
-      kernelModules = [ "acpi_call" ];
-      extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
-    };
-
-    services.acpid.enable = true;
-    services.autorandr.enable = true;
 
     fonts.fonts = with pkgs; [
       fira-code

@@ -47,6 +47,7 @@
           ./modules/common
           ./modules/work
           ./modules/wireguard
+          ./modules/laptop-hp
         ];
 
         specialArgs = { inherit inputs; };

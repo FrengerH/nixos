@@ -12,6 +12,7 @@ in
       enable = true;
       user = config.defaultUser;
     };
+    
     services.qemuGuest.enable = true;
     services.spice-vdagentd.enable = true;
     fileSystems = mkIf (config.defaultUser or "" != "") {
@@ -20,13 +21,7 @@ in
         fsType = "9p";
         options = [ "trans=virtio" "version=9p2000.L" ];
       };
-      # "/mnt/share" = {
-      #   device = "//${secrets.nas.ip}/share";
-      #   fsType = "cifs";
-      #   options = [ "username=${secrets.nas.user}" "password=${secrets.nas.password}" "domain=${secrets.nas.domain}" ];
-      # };
     };
-
 
     services.autorandr.profiles = {
         "vm-min" = {
