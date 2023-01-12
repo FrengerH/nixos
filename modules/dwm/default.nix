@@ -60,6 +60,7 @@ in
       # defaultSession = "none+dwm";
       lightdm = {
         enable = true;
+        background = "/etc/wallpaper/wallpaper.jpg";
         greeters.gtk.extraConfig = ''
           hide-user-image=true
           indicators=~spacer;~spacer;~spacer;~spacer;~spacer;~spacer;~power
