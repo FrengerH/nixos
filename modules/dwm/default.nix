@@ -3,6 +3,10 @@
 let
   rofiPkgs = import ./programs/rofi.nix { pkgs = pkgs; };
   dwmConfig = import ./overlays/configs/dwm.conf.nix { inherit config; inherit pkgs; };
+  unstable = import
+    (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/nixpkgs-unstable)
+    # reuse the current configuration
+    { config = config.nixpkgs.config; };
 in
   {
     nix.extraOptions = ''
@@ -44,7 +48,7 @@ in
 
     users.users.${config.defaultUser}.extraGroups = [ "audio" ];
 
-    users.defaultUserShell = pkgs.fish;
+    users.defaultUserShell = unstable.fish;
 
     services.xserver.libinput.enable = true;
     services.xserver.libinput.touchpad.naturalScrolling = true;

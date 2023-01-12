@@ -132,6 +132,9 @@
         command fasd --proc (command fasd --sanitize "$argv") > "/dev/null" 2>&1
     end
 
+    function last_history_item; echo $history[1]; end
+    abbr -a !! --position anywhere --function last_history_item
+
     function fish_greeting
     end
   '';
