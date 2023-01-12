@@ -20,7 +20,6 @@ in
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
     hardware.nvidia.modesetting.enable = true;
 
-    boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
     boot.extraModprobeConfig = ''
       options nvidia_drm modeset=1
     '';
@@ -63,7 +62,10 @@ in
 
     boot = {
       kernelModules = [ "acpi_call" ];
-      extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
+      extraModulePackages = with config.boot.kernelPackages; [
+        acpi_call 
+        nvidia_x11
+      ];
     };
 
     services.acpid.enable = true;
