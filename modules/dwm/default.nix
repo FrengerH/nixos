@@ -9,6 +9,7 @@ let
     { config = config.nixpkgs.config; };
 in
   {
+    boot.kernelPackages = pkgs.linuxPackages_6_0;
     nix.extraOptions = ''
         experimental-features = nix-command flakes
     '';
@@ -55,7 +56,16 @@ in
     services.xserver.libinput.touchpad.tapping = true;
 
     services.xserver.enable = true;
-    services.xserver.displayManager.lightdm.enable = true;
+    services.xserver.displayManager = {
+      # defaultSession = "none+dwm";
+      lightdm = {
+        enable = true;
+        greeters.gtk.extraConfig = ''
+          hide-user-image=true
+          indicators=~spacer;~spacer;~spacer;~spacer;~spacer;~spacer;~power
+        '';
+      };
+    };
     services.xserver.windowManager.dwm = {
       enable = true;
       package = (pkgs.dwm.override { conf = dwmConfig.config; }); 
