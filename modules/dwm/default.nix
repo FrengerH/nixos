@@ -22,9 +22,21 @@ in
         active-opacity = 1.0;
         inactive-dim = 0.2;
         opacity-rule = [
-          "99:class_g = 'dwm'"
-          "99:class_g = 'Rofi'"
+          "100:class_g = 'dwm'"
+          "100:class_g = 'Rofi'"
         ];
+        wintypes = {
+          dock = { shadow = false; };
+          dnd = { shadow = false; };
+          tooltip = { shadow = false; };
+          menu        = { opacity = false; };
+          dropdown_menu = { opacity = false; };
+          popup_menu    = { opacity = false; };
+          utility       = { opacity = false; };
+        };
+        unredir-if-possible = false;
+        backend = "xrender"; # try "glx" if xrender doesn't help
+        vsync = true;
       };
     };
 

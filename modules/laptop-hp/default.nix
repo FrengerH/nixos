@@ -14,11 +14,12 @@ in
 
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.opengl.enable = true;
-    services.hardware.bolt.enable = true;
+    # services.hardware.bolt.enable = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
     hardware.nvidia.modesetting.enable = true;
+    hardware.nvidia.powerManagement.enable = true;
 
     boot.extraModprobeConfig = ''
       options nvidia_drm modeset=1
