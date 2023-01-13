@@ -44,6 +44,8 @@ in
 
     users.defaultUserShell = unstable.fish;
 
+    services.autorandr.enable = true;
+
     services.xserver.enable = true;
     services.xserver.displayManager = {
       # defaultSession = "none+dwm";

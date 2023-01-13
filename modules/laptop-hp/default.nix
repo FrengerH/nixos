@@ -70,7 +70,6 @@ in
     };
 
     services.acpid.enable = true;
-    services.autorandr.enable = true;
 
     services.autorandr = {
       hooks.postswitch = {
