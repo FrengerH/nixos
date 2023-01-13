@@ -6,7 +6,10 @@ let
     secrets = builtins.fromJSON(builtins.readFile("/home/" + config.defaultUser + "/.config/nixos/secrets.json"));
 in
   {
-    environment.systemPackages = [ pkgs.cifs-utils ]; 
+    environment.systemPackages = with pkgs; [ 
+      cifs-utils 
+      spice-vdagent
+    ]; 
 
     services.xserver.displayManager.autoLogin = {
       enable = true;
@@ -14,7 +17,7 @@ in
     };
     
     services.qemuGuest.enable = true;
-    services.spice-vdagentd.enable = true;
+    # services.spice-vdagentd.enable = true;
     fileSystems = mkIf (config.defaultUser or "" != "") {
       "/home/${config.defaultUser}/vmshare"= {
         device = "vmshare";
