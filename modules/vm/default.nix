@@ -15,6 +15,31 @@ in
       enable = true;
       user = config.defaultUser;
     };
+
+    services._3proxy = {
+      enable = true;
+      services = [
+        {
+          type = "socks";
+          auth = [ "strong" ];
+          acl = [ {
+            rule = "allow";
+            users = [ "${config.defaultUser}" ];
+          }];
+          bindPort = 1080;
+        }
+      ];
+      usersFile = "/etc/3proxy.passwd";
+    };
+
+    networking.firewall = {
+      allowedTCPPorts = [ 1080 ];
+      # allowedUDPPorts = [ 3128 ];
+    };
+
+    services.openssh = {
+      enable = true;
+    };
     
     services.qemuGuest.enable = true;
     services.spice-vdagentd.enable = true;
