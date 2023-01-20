@@ -112,6 +112,8 @@ in {
         /* symbol     arrange function */
         { "[]=",      tile },    /* first entry is default */
         { "[M]",      monocle },
+        { "TTT",      bstack },
+	    { "===",      bstackhoriz },
         /*{ "><>",      NULL },*/    /* no layout function means floating behavior */
     };
 
