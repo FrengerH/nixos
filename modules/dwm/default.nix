@@ -99,6 +99,8 @@ in
 
     environment.etc."dwm/autostart/dwm".source = ./scripts/autostart;
     environment.etc."wallpaper/wallpaper.jpg".source = ./theme/wallpaper.jpg;
+    environment.etc."zellij/config.kdl".source = ./overlays/configs/zellij.conf.kdl;
+    environment.etc."zellij/layouts/main.kdl".source = ./overlays/configs/zellij.layout.kdl;
 
     environment.systemPackages = with pkgs; [
       st
@@ -125,16 +127,18 @@ in
       xdg-user-dirs
       pulseaudio
       fasd
+      zellij
     ];
 
     programs = {
-      tmux = import ./programs/tmux.nix { pkgs = pkgs; };
+      # tmux = import ./programs/tmux.nix { pkgs = pkgs; };
       fish = import ./programs/fish.nix;    
       starship = import ./programs/starship.nix;    
       nm-applet.enable = true;
     };
 
     nixpkgs.overlays = map import [ 
+      # ./overlays/zellij.nix
       ./overlays/dwm.nix
       ./overlays/st.nix
       ./overlays/tmux-dracula.nix

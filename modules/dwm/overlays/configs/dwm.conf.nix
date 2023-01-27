@@ -1,7 +1,7 @@
 { config, pkgs }:
 
 let 
-  startupScript = pkgs.writeShellScriptBin "startupScript" (builtins.readFile ../../scripts/tmux-start.sh); 
+  startupScript = pkgs.writeShellScriptBin "startupScript" (builtins.readFile ../../scripts/zellij-start.sh); 
   muteMic = pkgs.writeShellScriptBin "muteMic" (builtins.readFile ../../scripts/toggle_input.sh); 
   muteAudio = pkgs.writeShellScriptBin "muteAudio" (builtins.readFile ../../scripts/toggle_output.sh); 
   setVolume = pkgs.writeShellScriptBin "setVolume" (builtins.readFile ../../scripts/set_volume.sh); 

@@ -1,0 +1,22 @@
+diff --git a/default-plugins/compact-bar/src/line.rs b/default-plugins/compact-bar/src/line.rs
+index 675f46a9..f0af727b 100644
+--- a/default-plugins/compact-bar/src/line.rs
++++ b/default-plugins/compact-bar/src/line.rs
+@@ -153,7 +153,7 @@ fn tab_line_prefix(
+     palette: Palette,
+     cols: usize,
+ ) -> Vec<LinePart> {
+-    let prefix_text = " Zellij ".to_string();
++    let prefix_text = " ".to_string();
+ 
+     let prefix_text_len = prefix_text.chars().count();
+     let text_color = match palette.theme_hue {
+@@ -175,7 +175,7 @@ fn tab_line_prefix(
+         len: prefix_text_len,
+     }];
+     if let Some(name) = session_name {
+-        let name_part = format!("({}) ", name);
++        let name_part = format!("{} ", name);
+         let name_part_len = name_part.width();
+         let text_color = match palette.theme_hue {
+             ThemeHue::Dark => palette.white,

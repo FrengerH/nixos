@@ -37,6 +37,7 @@ in
 
     environment.systemPackages = with pkgs; [
       nvidia-offload
+      acpi
     ];
 
     sound.enable = pkgs.lib.mkForce false;
