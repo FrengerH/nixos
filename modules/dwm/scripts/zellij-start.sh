@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-terminals=$(ps -e | grep 'zellij' | wc -l)
+sessions=$(zellij list-sessions | wc -l)
+terminals=$(wmctrl -l | grep 'Zellij (base)' | wc -l)
 if [ $terminals -lt 1 ];
 then
-    ses=$(zellij list-sessions | awk '{ print $1 }')
+    ses=$(zellij list-sessions | grep 'base' | awk '{ print $1 }')
     if [ "$ses" == "base" ];
     then
         zellij attach base
@@ -11,7 +12,7 @@ then
         zellij -s base
     fi
 else
-    nr=$(terminals/2)
+    nr=$(($sessions+1))
     zellij -s "$nr"
 fi
 

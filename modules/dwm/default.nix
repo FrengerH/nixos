@@ -128,6 +128,7 @@ in
       pulseaudio
       fasd
       zellij
+      wmctrl
     ];
 
     programs = {
