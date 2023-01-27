@@ -18,4 +18,7 @@ fi
 sleep 1
 feh --bg-fill /etc/wallpaper/wallpaper.jpg
 dwmblocks
-
+checkbm=`ps -e | command -v blueman-applet | wc -l`
+if [ $checkbm -gt 0 ]; then
+    blueman-applet
+fi

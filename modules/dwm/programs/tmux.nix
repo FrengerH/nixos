@@ -6,6 +6,8 @@
     dracula
   ];
   extraConfig = ''
+    unbind C-b
+    set-option -g prefix C-a
     set -g mouse on
 
     set -g history-limit 50000
