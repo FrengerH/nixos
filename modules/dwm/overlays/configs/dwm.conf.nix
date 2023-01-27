@@ -243,51 +243,6 @@ in {
       IPCCOMMAND(  tag,                 1,      {ARG_TYPE_UINT}   ),
       IPCCOMMAND(  toggletag,           1,      {ARG_TYPE_UINT}   ),
       IPCCOMMAND(  tagmon,              1,      {ARG_TYPE_UINT}   ),
-        /* TAGKEYS(                 XK_q,                                           0) */
-        /* TAGKEYS(                 XK_q,                                           0) */
-        /* TAGKEYS(                 XK_q,                                           0) */
-        /* TAGKEYS(                 XK_q,                                           0) */
-        /* TAGKEYS(                 XK_q,                                           0) */
-        /* TAGKEYS(                 XK_w,                                           1) */ 
-        /* TAGKEYS(                 XK_f,                                           2) */
-        /* TAGKEYS(                 XK_p,                                           3) */
-        /* TAGKEYS(                 XK_b,                                           4) */
-        /* TAGKEYS(                 XK_j,                                           5) */
-        /* TAGKEYS(                 XK_l,                                           6) */
-        /* TAGKEYS(                 XK_u,                                           7) */
-        /* TAGKEYS(                 XK_y,                                           8) */
-        /* TAGKEYS(                 XK_w,                                           1) */ 
-        /* TAGKEYS(                 XK_f,                                           2) */
-        /* TAGKEYS(                 XK_p,                                           3) */
-        /* TAGKEYS(                 XK_b,                                           4) */
-        /* TAGKEYS(                 XK_j,                                           5) */
-        /* TAGKEYS(                 XK_l,                                           6) */
-        /* TAGKEYS(                 XK_u,                                           7) */
-        /* TAGKEYS(                 XK_y,                                           8) */
-        /* TAGKEYS(                 XK_w,                                           1) */ 
-        /* TAGKEYS(                 XK_f,                                           2) */
-        /* TAGKEYS(                 XK_p,                                           3) */
-        /* TAGKEYS(                 XK_b,                                           4) */
-        /* TAGKEYS(                 XK_j,                                           5) */
-        /* TAGKEYS(                 XK_l,                                           6) */
-        /* TAGKEYS(                 XK_u,                                           7) */
-        /* TAGKEYS(                 XK_y,                                           8) */
-        /* TAGKEYS(                 XK_w,                                           1) */ 
-        /* TAGKEYS(                 XK_f,                                           2) */
-        /* TAGKEYS(                 XK_p,                                           3) */
-        /* TAGKEYS(                 XK_b,                                           4) */
-        /* TAGKEYS(                 XK_j,                                           5) */
-        /* TAGKEYS(                 XK_l,                                           6) */
-        /* TAGKEYS(                 XK_u,                                           7) */
-        /* TAGKEYS(                 XK_y,                                           8) */
-        /* TAGKEYS(                 XK_w,                                           1) */ 
-        /* TAGKEYS(                 XK_f,                                           2) */
-        /* TAGKEYS(                 XK_p,                                           3) */
-        /* TAGKEYS(                 XK_b,                                           4) */
-        /* TAGKEYS(                 XK_j,                                           5) */
-        /* TAGKEYS(                 XK_l,                                           6) */
-        /* TAGKEYS(                 XK_u,                                           7) */
-        /* TAGKEYS(                 XK_y,                                           8) */
       IPCCOMMAND(  focusmon,            1,      {ARG_TYPE_SINT}   ),
       IPCCOMMAND(  focusstack,          1,      {ARG_TYPE_SINT}   ),
       IPCCOMMAND(  zoom,                1,      {ARG_TYPE_NONE}   ),
