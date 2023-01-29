@@ -132,7 +132,6 @@ in
     ];
 
     programs = {
-      # tmux = import ./programs/tmux.nix { pkgs = pkgs; };
       fish = import ./programs/fish.nix;    
       starship = import ./programs/starship.nix;    
       nm-applet.enable = true;
@@ -142,7 +141,6 @@ in
       # ./overlays/zellij.nix
       ./overlays/dwm.nix
       ./overlays/st.nix
-      ./overlays/tmux-dracula.nix
       ./overlays/dwmblocks.nix
     ];
 }

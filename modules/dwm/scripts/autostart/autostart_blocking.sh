@@ -5,3 +5,4 @@ numlockx &
 autorandr --change &
 xdg-user-dirs-update --force &
 pactl list sinks &
+

@@ -4,8 +4,6 @@
     l="ls -lvh";
     ll="ls -lvAh";
 
-    ab="tmux switch -t base";
-
     conf="cd ~/.config";
 
     ssh="TERM=xterm-256color /usr/bin/env ssh";
@@ -104,11 +102,11 @@
       set_color normal
     end
 
-    #if status is-interactive
-        if string match -q -- 'tmux*' $TERM
-            set -g fish_vi_force_cursor 1
-        end
-    #end
+    ##if status is-interactive
+    #    if string match -q -- 'tmux*' $TERM
+    #        set -g fish_vi_force_cursor 1
+    #    end
+    ##end
 
     function fish_user_key_bindings
       fish_vi_key_bindings --no-erase insert

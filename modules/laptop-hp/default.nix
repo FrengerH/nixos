@@ -28,29 +28,13 @@ in
     hardware.bluetooth.enable = true;
     services.blueman.enable = true;
 
-    nixpkgs.overlays = map import [ 
-      ./overlays/wpa_supplicant.nix
+
+    environment.etc."wpa_supplicant/wpa_supplicant.conf".source = ./wpa_supplicant/wpa_supplicant.conf;
+
+    systemd.services.wpa_supplicant.serviceConfig.ExecStart = [
+      ""
+      "${pkgs.wpa_supplicant}/bin/wpa_supplicant -u -i wlp0s20f3 -c /etc/wpa_supplicant/wpa_supplicant.conf"
     ];
-
-    # nixpkgs.config.packageOverrides = pkgs: rec {
-    #   wpa_supplicant = pkgs.wpa_supplicant.overrideAttrs (attrs: {
-    #     patches = attrs.patches ++ [ ./wpa2.patch ];
-    #   });
-    # };
-
-    # systemd.services.wpa_supplicant.environment.OPENSSL_CONF = pkgs.writeText "openssl.cnf" ''
-    #   openssl_conf = openssl_init
-    #   [openssl_init]
-    #   ssl_conf = ssl_sect
-    #   [ssl_sect]
-    #   system_default = system_default_sect
-    #   [system_default_sect]
-    #   Options = UnsafeLegacyRenegotiation
-    #   tls-cipher "DEFAULT:@SECLEVEL=0"
-    # '';
-
-    # networking.wireless.iwd.enable = true;
-    # networking.networkmanager.wifi.backend = "iwd";
 
     hardware.nvidia.prime = {
       offload.enable = true;
@@ -102,13 +86,13 @@ in
     services.autorandr = {
       hooks = {
         predetect = {
-          "notify" = "notify-send 'predetect'";
+          # "notify" = "notify-send 'predetect'";
         };
         preswitch = {
-          "notify" = "notify-send 'preswitch'";
+          # "notify" = "notify-send 'preswitch'";
         };
         postswitch = {
-          "notify" = "notify-send 'postswitch'";
+          # "notify" = "notify-send 'postswitch'";
           "change-bg" = "feh --bg-fill /etc/wallpaper/wallpaper.jpg";
         };
       };

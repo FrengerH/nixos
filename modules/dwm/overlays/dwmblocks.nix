@@ -4,13 +4,15 @@ with super;
 
 let
   calendar = super.writeShellScriptBin "calendar" (builtins.readFile ../scripts/dwmblocks/calendar.sh);
+  battery = super.writeShellScriptBin "battery" (builtins.readFile ../scripts/dwmblocks/battery.sh);
   power = super.writeShellScriptBin "power" (builtins.readFile ../scripts/dwmblocks/power.sh);
 
   configFile = super.writeText "config.h" ''
     static Block blocks[] = {
     /*      pathu                                       interval        signal */
       BLOCK("${calendar.outPath}/bin/calendar",         30,             3),
-      BLOCK("${power.outPath}/bin/power power-menu",    30,             4)
+      BLOCK("${battery.outPath}/bin/battery",          0,             4),
+      BLOCK("${power.outPath}/bin/power power-menu",    30,             5)
     };
 
     // Maximum possible length of output from block, expressed in number of characters.

@@ -22,9 +22,9 @@ in
     #   outputHash = "sha256-Bxm0hvdxhDZiVWWfxuedkb46YzbEvYrCgQ1IOY0pJZA=";
     # });
 
-    cargoPatches = [
-      "./patches/zellij-compact.diff"
-    ];
+    # cargoPatches = [
+    #   "./patches/zellij-compact.diff"
+    # ];
 
   });
 }
