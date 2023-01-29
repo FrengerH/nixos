@@ -11,7 +11,7 @@ let
     static Block blocks[] = {
     /*      pathu                                       interval        signal */
       BLOCK("${calendar.outPath}/bin/calendar",         30,             3),
-      BLOCK("${battery.outPath}/bin/battery",          0,             4),
+      BLOCK("${battery.outPath}/bin/battery",           60,             4),
       BLOCK("${power.outPath}/bin/power power-menu",    30,             5)
     };
 
