@@ -46,10 +46,6 @@ in
       nvidiaBusId = "PCI:1:0:0";
     };
 
-    fonts.fonts = with pkgs; [
-      carlito
-    ];
-
     environment.systemPackages = with pkgs; [
       nvidia-offload
       acpi

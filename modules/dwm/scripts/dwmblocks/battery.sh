@@ -3,8 +3,8 @@
 acpi=`ps -e | command -v acpi | wc -l`
 if [ $acpi -gt 0 ]; then
     response=`acpi -b`
-    proc=`echo $response | awk '{print $NF}'`
-    charge_state=`echo $response | awk -F ': ' '{print $2}' | awk -F ',' '{print $1}'`
+    proc=`echo $response | awk -F ': ' '{print $2}' | awk -F ', ' '{print $2}'`
+    charge_state=`echo $response | awk -F ': ' '{print $2}' | awk -F ', ' '{print $1}'`
     # echo $charge_state
     nr=${proc::-1}
     if (($nr<=5)); then
