@@ -13,19 +13,19 @@ if [ $acpi -gt 0 ]; then
         ico="010"
     elif (($nr<=25)); then
         ico="020"
-    elif (($nr<=25)); then
+    elif (($nr<=35)); then
         ico="030"
-    elif (($nr<=25)); then
+    elif (($nr<=45)); then
         ico="040"
-    elif (($nr<=25)); then
+    elif (($nr<=55)); then
         ico="050"
-    elif (($nr<=25)); then
+    elif (($nr<=65)); then
         ico="060"
-    elif (($nr<=25)); then
+    elif (($nr<=75)); then
         ico="070"
-    elif (($nr<=25)); then
+    elif (($nr<=85)); then
         ico="080"
-    elif (($nr<=25)); then
+    elif (($nr<=95)); then
         ico="090"
     else
         ico="100"
@@ -54,7 +54,11 @@ if [ $acpi -gt 0 ]; then
     ICON080=""
     ICON090=""
     ICON100=""
+
     icon='ICON'$ico
+    if [ $charge_state = 'Charging' ]; then
+        icon='ICONC'$ico
+    fi
     printf "${!icon} %s" "$proc"
 fi
 
