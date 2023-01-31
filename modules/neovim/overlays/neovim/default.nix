@@ -6,6 +6,7 @@ let
   cmp = pkgs.writeText "cmp.lua" (builtins.readFile ./config/cmp.lua);
   colorizer = pkgs.writeText "colorizer.lua" (builtins.readFile ./config/colorizer.lua);
   colorscheme = pkgs.writeText "colorscheme.lua" (builtins.readFile ./config/colorscheme.lua);
+  commentary = pkgs.writeText "commentary.lua" (builtins.readFile ./config/commentary.lua);
   debug = pkgs.writeText "debug.lua" (builtins.readFile ./config/debug.lua);
   gitsigns = pkgs.writeText "gitsigns.lua" (builtins.readFile ./config/gitsigns.lua);
   keymaps = pkgs.writeText "keymaps.lua" (builtins.readFile ./config/keymaps.lua);
@@ -25,6 +26,7 @@ in
           luafile ${cmp}
           luafile ${colorizer}
           luafile ${colorscheme}
+          luafile ${commentary}
           luafile ${debug}
           luafile ${gitsigns}
           luafile ${keymaps}

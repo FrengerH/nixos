@@ -101,6 +101,7 @@ in
     environment.etc."wallpaper/wallpaper.jpg".source = ./theme/wallpaper.jpg;
     environment.etc."zellij/config.kdl".source = ./overlays/configs/zellij.conf.kdl;
     environment.etc."zellij/layouts/main.kdl".source = ./overlays/configs/zellij.layout.kdl;
+    environment.etc."zellij/plugins/custom-compact-bar.wasm".source = ./scripts/compact-bar.wasm;
 
     environment.systemPackages = with pkgs; [
       st
