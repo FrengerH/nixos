@@ -127,6 +127,7 @@ keybinds {
         bind "k" { MoveFocus "Up"; SwitchToMode "Normal"; }
         bind "o" { FocusNextPane; }
         bind "d" { Detach; }
+        bind "x" { CloseTab; }
     }
     shared_except "locked" {
         bind "Ctrl g" { SwitchToMode "Locked"; }

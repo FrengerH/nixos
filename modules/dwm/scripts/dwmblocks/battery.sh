@@ -2,7 +2,7 @@
 
 acpi=`ps -e | command -v acpi | wc -l`
 if [ $acpi -gt 0 ]; then
-    response=`acpi -b`
+    response=`acpi -b | grep 'Battery 0'`
     proc=`echo $response | awk -F ': ' '{print $2}' | awk -F ', ' '{print $2}'`
     charge_state=`echo $response | awk -F ': ' '{print $2}' | awk -F ', ' '{print $1}'`
     # echo $charge_state
