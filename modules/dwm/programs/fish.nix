@@ -8,10 +8,12 @@
 
     ssh="TERM=xterm-256color /usr/bin/env ssh";
 
-    j="fasd_cd -d";     # cd, same functionality as j in autojump
+    # j="fasd_cd -d";     # cd, same functionality as j in autojump
+    cat="bat -p";
 
   };
   shellInit = ''
+    zoxide init fish | source
     set -gx XDG_CONFIG_HOME ~/.config/
 
     set -g fish_term24bit 1
@@ -116,19 +118,19 @@
       bind -m insert v 'tmux copy-mode; commandline -f repaint-mode'
     end
 
-    function fasd_cd -d "fasd builtin cd"
-      if test (count $argv) -le 1
-        command fasd "$argv"
-      else
-        fasd -e 'printf %s' $argv | read -l ret
-        test -z "$ret"; and return
-        test -d "$ret"; and cd "$ret"; or printf "%s\n" $ret
-      end
-    end
+    # function fasd_cd -d "fasd builtin cd"
+    #   if test (count $argv) -le 1
+    #     command fasd "$argv"
+    #   else
+    #     fasd -e 'printf %s' $argv | read -l ret
+    #     test -z "$ret"; and return
+    #     test -d "$ret"; and cd "$ret"; or printf "%s\n" $ret
+    #   end
+    # end
 
-    function update_fasd_db --on-event fish_preexec -d "fasd takes record of the directories changed into"
-        command fasd --proc (command fasd --sanitize "$argv") > "/dev/null" 2>&1
-    end
+    # function update_fasd_db --on-event fish_preexec -d "fasd takes record of the directories changed into"
+    #     command fasd --proc (command fasd --sanitize "$argv") > "/dev/null" 2>&1
+    # end
 
     function last_history_item; echo $history[1]; end
     abbr -a !! --position anywhere --function last_history_item

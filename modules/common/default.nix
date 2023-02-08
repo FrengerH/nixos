@@ -33,6 +33,7 @@ in
         flameshot
         direnv
         nix-direnv
+        bat
       ];
 
       environment.pathsToLink = [

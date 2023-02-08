@@ -127,7 +127,7 @@ in
       numlockx
       xdg-user-dirs
       pulseaudio
-      fasd
+      zoxide
       zellij
       wmctrl
     ];
