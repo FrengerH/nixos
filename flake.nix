@@ -3,9 +3,10 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-22.11";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
   
-  outputs = {self, nixpkgs, ...} @inputs:
+  outputs = {self, nixpkgs, hyprland, ...} @inputs:
   let
     system = "x86_64-linux";
 
@@ -24,12 +25,13 @@
         inherit system;
 
         modules = [
+          # hyprland.nixosModules.default
+          # ./modules/hyprland
           /etc/nixos/configuration.nix
           ./modules/dwm
-          ./modules/vm
-          #./modules/virt-manager
-          ./modules/neovim
           ./modules/common
+          ./modules/vm
+          ./modules/neovim
           ./modules/wireguard
         ];
 
@@ -42,9 +44,9 @@
         modules = [
           /etc/nixos/configuration.nix
           ./modules/dwm
+          ./modules/common
           ./modules/virt-manager
           ./modules/neovim
-          ./modules/common
           ./modules/work
           ./modules/wireguard
           ./modules/laptop-hp

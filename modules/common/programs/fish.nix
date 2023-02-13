@@ -9,7 +9,7 @@
     ssh="TERM=xterm-256color /usr/bin/env ssh";
 
     # j="fasd_cd -d";     # cd, same functionality as j in autojump
-    cat="bat -p";
+    cat="bat --theme catppuccin -p";
 
   };
   shellInit = ''
