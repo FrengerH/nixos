@@ -38,6 +38,12 @@ in
       services.autorandr.enable = true;
       services.samba.enable = true;
       services.gvfs.enable = true;
+      services.udev.packages = [ pkgs.yubikey-personalization ];
+
+      programs.gnupg.agent = {
+        enable = true;
+        enableSSHSupport = true;
+      };
 
       fonts.fonts = with pkgs; [
         fira-code

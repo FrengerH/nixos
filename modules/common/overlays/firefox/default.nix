@@ -34,7 +34,7 @@ in
         Bookmarks = [
           {
             "Title" = "Nixos packages";
-            "URL" = "https://search.nixos.org/packages";
+            "URL" = "https://search.nixos.org/packages?channel=22.11&from=0&size=50&sort=relevance&type=packages&query=%s";
             "Favicon" = "https://nixos.org/favicon.png";
             "Placement" = "menu";
             "Folder" = "General";
