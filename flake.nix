@@ -50,6 +50,7 @@
           ./modules/work
           ./modules/wireguard
           ./modules/laptop-hp
+          ./modules/yubikey
         ];
 
         specialArgs = { inherit inputs; };

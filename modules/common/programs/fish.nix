@@ -12,6 +12,9 @@
     cat="bat --theme catppuccin -p";
 
   };
+  promptInit = ''
+    any-nix-shell fish --info-right | source
+  '';
   shellInit = ''
     zoxide init fish | source
     set -gx XDG_CONFIG_HOME ~/.config/

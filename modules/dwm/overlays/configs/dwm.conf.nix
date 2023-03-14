@@ -100,6 +100,7 @@ in {
             { "Code",                      NULL,              NULL,                     1 << 7,       0,           -1 },
             { "Sublime_text",              NULL,              NULL,                     1 << 8,       0,           -1 },
             { NULL,                        NULL,              "Volume Control",         SPTAG(4),     1,           -1 },
+            { "pinentry",                  NULL,              NULL,                     -1,           1,           -1 },
     };
 
     /* layout(s) */

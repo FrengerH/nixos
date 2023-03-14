@@ -49,6 +49,11 @@ if [[ ! -f "$DIRENV_FILE" ]]; then
     echo "source /run/current-system/sw/share/nix-direnv/direnvrc" > $DIRENV_FILE
 fi
 
+yubi=`ps -e | command -v yubikey-touch-detector | wc -l`
+if [ $yubi -gt 0 ]; then
+    systemctl --user enable --now yubikey-touch-detector.service
+fi
+
 # rm -f flake.lock
 # nix-collect-garbage
 sudo nix-channel --update
