@@ -16,7 +16,6 @@ let
 in
   {
     boot.kernelModules = [ "kvm-intel" ];
-    boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
     virtualisation.libvirtd.enable = true;
     # virtualisation.libvirtd.extraConfig = ''
     #   unix_sock_group = "libvirtd"
