@@ -25,6 +25,8 @@ in
       defaultUser = userConf.defaultUser;
       notesDir = "/home/${config.defaultUser}/notes";
 
+      boot.supportedFilesystems = [ "ntfs" ];
+
       nix.settings.auto-optimise-store = true;
 
       nix.extraOptions = ''

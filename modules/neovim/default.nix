@@ -10,6 +10,7 @@ in
       neovim
       rnix-lsp
       sumneko-lua-language-server
+      php82Packages.psalm
     ];
 
     nixpkgs.overlays = map import [ 

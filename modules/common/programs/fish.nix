@@ -116,6 +116,8 @@
     function fish_user_key_bindings
       fish_vi_key_bindings --no-erase insert
       bind -M insert \cn accept-autosuggestion
+      bind -M insert \cs '~/work/scripts/selector/result/bin/selector; commandline -f repaint-mode'
+      bind -M default \cs '~/work/scripts/selector/result/bin/selector; commandline -f repaint-mode'
       bind --preset -M insert \cl echo test
       #  bind --erase --preset -M insert \cl echo test
       bind -m insert v 'tmux copy-mode; commandline -f repaint-mode'
