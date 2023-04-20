@@ -26,6 +26,7 @@ in
       notesDir = "/home/${config.defaultUser}/notes";
 
       boot.supportedFilesystems = [ "ntfs" ];
+      boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
       nix.settings.auto-optimise-store = true;
 
@@ -95,6 +96,8 @@ in
         catppuccin-gtk
         any-nix-shell
         gnome.gnome-disk-utility
+        # nixopsUnstable
+        nixops
       ];
 
       programs = {
