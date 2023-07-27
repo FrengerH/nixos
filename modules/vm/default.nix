@@ -9,7 +9,14 @@ in
     environment.systemPackages = with pkgs; [ 
       cifs-utils 
       spice-vdagent
+      kubectl
+      kubernetes-helm
+      helmfile
+      docker-compose
     ]; 
+
+    virtualisation.docker.enable = true;
+    users.users.${config.defaultUser}.extraGroups = [ "docker" ];
 
     services.xserver.displayManager.autoLogin = {
       enable = true;
@@ -33,14 +40,15 @@ in
     };
 
     networking.firewall = {
-      allowedTCPPorts = [ 1080 ];
-      # allowedUDPPorts = [ 3128 ];
+      allowedTCPPorts = [ 
+        1080 
+      ];
     };
 
     services.openssh = {
       enable = true;
     };
-    
+
     services.qemuGuest.enable = true;
     services.spice-vdagentd.enable = true;
     fileSystems = mkIf (config.defaultUser or "" != "") {

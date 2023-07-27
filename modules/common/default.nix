@@ -96,8 +96,6 @@ in
         catppuccin-gtk
         any-nix-shell
         gnome.gnome-disk-utility
-        # nixopsUnstable
-        nixops
       ];
 
       programs = {

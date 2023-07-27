@@ -11,6 +11,8 @@
     # j="fasd_cd -d";     # cd, same functionality as j in autojump
     cat="bat --theme catppuccin -p";
 
+    k="kubectl";
+
   };
   promptInit = ''
     any-nix-shell fish --info-right | source
