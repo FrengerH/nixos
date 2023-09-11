@@ -10,8 +10,6 @@ let
   '';
 in
   {
-    boot.kernelPackages = pkgs.linuxPackages_6_1;
-
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.opengl.enable = true;
     # services.hardware.bolt.enable = true;

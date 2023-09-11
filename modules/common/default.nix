@@ -2,10 +2,6 @@
 
 let
    userConf = builtins.fromJSON(builtins.readFile("/etc/nixos/username.json"));
-    unstable = import
-        (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/nixpkgs-unstable)
-        # reuse the current configuration
-        { config = config.nixpkgs.config; };
 in
   {
     options = with lib.options; {
@@ -36,7 +32,7 @@ in
 
       hardware.enableAllFirmware  = true;
       
-      users.defaultUserShell = unstable.fish;
+      users.defaultUserShell = pkgs.fish;
 
       services.autorandr.enable = true;
       services.samba.enable = true;
