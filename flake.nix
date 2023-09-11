@@ -2,7 +2,7 @@
   description = "System flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-22.11";
+    nixpkgs.url = "nixpkgs/nixos-23.05";
     hyprland.url = "github:hyprwm/Hyprland";
   };
   
@@ -48,7 +48,7 @@
           ./modules/virt-manager
           ./modules/neovim
           ./modules/work
-          ./modules/wireguard
+          # ./modules/wireguard
           ./modules/laptop-hp
           ./modules/yubikey
         ];

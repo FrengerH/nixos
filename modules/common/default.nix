@@ -90,7 +90,7 @@ in
         xdg-user-dirs
         numlockx
         cinnamon.nemo
-        gnome.file-roller
+        cinnamon.nemo-fileroller
         xorg.xrandr
         dracula-theme
         catppuccin-gtk

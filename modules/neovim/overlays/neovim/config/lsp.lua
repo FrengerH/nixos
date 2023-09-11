@@ -65,6 +65,19 @@ nvim_lsp['pylsp'].setup {
     }
 }
 
+-- nvim_lsp['pylyzer'].setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     settings = {
+--         python = {
+--             checkOnType = false,
+--             diagnostics = true,
+--             inlayHints = true,
+--             smartCompletion = true
+--         }
+--     }
+-- }
+
 nvim_lsp['rnix'].setup {
     on_attach = on_attach,
     filetypes = { "nix" },
@@ -82,7 +95,7 @@ nvim_lsp['clangd'].setup {
     capabilities = capabilities
 }
 
-nvim_lsp['sumneko_lua'].setup {
+nvim_lsp['lua_ls'].setup {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
         on_attach(client, bufnr)

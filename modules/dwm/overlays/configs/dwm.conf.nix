@@ -74,7 +74,7 @@ in {
     };
 
     /* tagging */
-    static const char *tags[] = {  " ₁", " ₂", " ₃", " ₄", " ₅", " ₆", " ₇", " ₈", " ₉" };
+    static const char *tags[] = {  " ₁", " ₂", " ₃", " ₄", "󱨍 ₅", "󰒋 ₆", "󱋊 ₇", " ₈", " ₉" };
 
     static const Rule rules[] = {
         /* xprop(1):

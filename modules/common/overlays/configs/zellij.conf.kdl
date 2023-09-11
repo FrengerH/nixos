@@ -320,3 +320,9 @@ layout_dir "/etc/zellij/layouts"
 // The folder in which Zellij will look for themes
 //
 // theme_dir "/path/to/my/theme_dir"
+
+// ui {
+//     pane_frames {
+//         hide_session_name true
+//     }
+// }
