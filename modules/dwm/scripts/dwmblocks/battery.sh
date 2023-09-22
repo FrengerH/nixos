@@ -31,29 +31,29 @@ if [ $acpi -gt 0 ]; then
         ico="100"
     fi
 
-    ICONC000=""
-    ICONC010=""
-    ICONC020=""
-    ICONC030=""
-    ICONC040=""
-    ICONC050=""
-    ICONC060=""
-    ICONC070=""
-    ICONC080=""
-    ICONC090=""
-    ICONC100=""
+    ICONC000="󰂎"
+    ICONC010="󰁺"
+    ICONC020="󰁻"
+    ICONC030="󰁼"
+    ICONC040="󰁽"
+    ICONC050="󰁾"
+    ICONC060="󰁿"
+    ICONC070="󰂀"
+    ICONC080="󰂁"
+    ICONC090="󰂂"
+    ICONC100="󰁹"
 
-    ICON000=""
-    ICON010=""
-    ICON020=""
-    ICON030=""
-    ICON040=""
-    ICON050=""
-    ICON060=""
-    ICON070=""
-    ICON080=""
-    ICON090=""
-    ICON100=""
+    ICON000="󰂎"
+    ICON010="󰢜"
+    ICON020="󰂆"
+    ICON030="󰂇"
+    ICON040="󰂈"
+    ICON050="󰢝"
+    ICON060="󰂉"
+    ICON070="󰢞"
+    ICON080="󰂊"
+    ICON090="󰂋"
+    ICON100="󰂅"
 
     icon='ICON'$ico
     if [ $charge_state = 'Charging' ]; then

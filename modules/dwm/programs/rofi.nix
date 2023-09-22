@@ -22,11 +22,11 @@ in
 
       # Options
       if [[ "$DIR" == "powermenus" ]]; then
-          shutdown="襤"
-          reboot="ﰇ"
-          lock=""
-          suspend="鈴"
-          logout=" "
+          shutdown="󰐥"
+          reboot="󰜉"
+          lock="󰌾"
+          suspend="󰒲"
+          logout="󰗽 "
       else
 
       # For some reason the Icons are mess up I don't know why but to fix it uncomment section 2 and comment section 1 but if the section 1 icons are mess up uncomment section 2 and comment section 1
@@ -35,20 +35,20 @@ in
           layout=`cat $THEME | grep BUTTON | cut -d'=' -f2 | tr -d '[:blank:],*/'`
           if [[ "$layout" == "TRUE" ]]; then
             # Section 2
-                shutdown="襤"
-                reboot="ﰇ"
-                lock=""
-                suspend="鈴"
-                logout=" "
+                shutdown="󰐥"
+                reboot="󰜉"
+                lock="󰌾"
+                suspend="󰒲"
+                logout="󰗽 "
 
 
           else
             # Section 2
-                shutdown="襤Shutdown"
-                reboot="ﰇ Restart"
-                lock=" Lock"
-                suspend="鈴Sleep"
-                logout=" Logout"
+                shutdown="󰐥 Shutdown"
+                reboot="󰜉 Restart"
+                lock="󰌾 Lock"
+                suspend="󰒲 Sleep"
+                logout="󰗽 Logout"
           fi
       fi
 

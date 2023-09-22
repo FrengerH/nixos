@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-printf "襤 |"
+printf "󰐥 |"
 
 case $BLOCK_BUTTON in
 	1) $1 ;;

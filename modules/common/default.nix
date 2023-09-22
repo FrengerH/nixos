@@ -85,8 +85,7 @@ in
         wmctrl
         xdg-user-dirs
         numlockx
-        cinnamon.nemo
-        cinnamon.nemo-fileroller
+        cinnamon.nemo-with-extensions
         xorg.xrandr
         dracula-theme
         catppuccin-gtk

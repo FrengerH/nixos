@@ -85,6 +85,13 @@ nvim_lsp['rnix'].setup {
     capabilities = capabilities
 }
 
+nvim_lsp['nixd'].setup {
+    on_attach = on_attach,
+    filetypes = { "nix" },
+    cmd = { "nixd" },
+    capabilities = capabilities
+}
+
 nvim_lsp['rust_analyzer'].setup {
     on_attach = on_attach,
     capabilities = capabilities

@@ -35,7 +35,10 @@ in
     ];
 
     hardware.nvidia.prime = {
-      offload.enable = true;
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
 
       # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
       intelBusId = "PCI:0:2:0";
@@ -47,6 +50,7 @@ in
     environment.systemPackages = with pkgs; [
       nvidia-offload
       acpi
+      bluez
     ];
 
     sound.enable = pkgs.lib.mkForce false;

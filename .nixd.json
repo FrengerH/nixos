@@ -1,0 +1,10 @@
+{
+  eval = {
+    target = {
+      args = [
+        "--expr",
+        "with import ./. {}; nix-doc"
+      ];
+    };
+  };
+}

@@ -41,6 +41,7 @@ BAT_THEME_ORI="./modules/common/theme/bat/catppuccin.tmTheme"
 if [[ ! -f "$BAT_THEME" ]]; then
     mkdir -p $BAT_THEME_DIR
     sudo cp -Rf $BAT_THEME_ORI $BAT_THEME
+    # bat cache --build
 fi
 
 
@@ -56,5 +57,5 @@ fi
 
 # rm -f flake.lock
 # nix-collect-garbage
-sudo nix-channel --update
+# sudo nix-channel --update
 sudo nixos-rebuild switch --flake ./#$1 --impure

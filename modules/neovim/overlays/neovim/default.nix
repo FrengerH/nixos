@@ -15,6 +15,10 @@ let
   options = pkgs.writeText "options.lua" (builtins.readFile ./config/options.lua);
   telescope = pkgs.writeText "telescope.lua" (builtins.readFile ./config/telescope.lua);
   treesitter = pkgs.writeText "treesitter.lua" (builtins.readFile ./config/treesitter.lua);
+  unstable = import
+    (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/nixpkgs-unstable)
+    # reuse the current configuration
+    { config = super.config; };
 in
   {
     neovim = super.neovim.override {
@@ -64,7 +68,7 @@ in
             vim-commentary
 
             # Lsp
-            nvim-lspconfig
+            unstable.vimPlugins.nvim-lspconfig
 
             # Completion
             nvim-cmp
