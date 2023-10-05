@@ -29,6 +29,8 @@ in
       nixos-vm-desktop
     ];
 
+    virtualisation.spiceUSBRedirection.enable = true;
+
     users.users.${config.defaultUser}.extraGroups = [ "libvirtd" ];
   }
 

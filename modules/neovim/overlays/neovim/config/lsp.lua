@@ -124,6 +124,11 @@ nvim_lsp['lua_ls'].setup {
     },
 }
 
+nvim_lsp['arduino_language_server'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
 -- lsp_installer.on_server_ready(function(server)
 --     local opts = {
 --         on_attach = on_attach

@@ -3,7 +3,7 @@
 with lib;
 
 let
-    secrets = builtins.fromJSON(builtins.readFile("/home/" + config.defaultUser + "/.config/nixos/secrets.json"));
+
 in
   {
     environment.systemPackages = with pkgs; [ 

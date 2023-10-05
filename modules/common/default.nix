@@ -69,6 +69,8 @@ in
       environment.etc."zellij/layouts/main.kdl".source = ./overlays/configs/zellij.layout.kdl;
       environment.etc."zellij/plugins/custom-compact-bar.wasm".source = ./scripts/compact-bar.wasm;
 
+      users.users.${config.defaultUser}.extraGroups = [ "dialout" ];
+
       environment.systemPackages = with pkgs; [
         git
         gcc

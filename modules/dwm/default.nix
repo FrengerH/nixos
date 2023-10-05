@@ -50,9 +50,11 @@ in
       package = (pkgs.dwm.override { conf = dwmConfig.config; }); 
     };
 
-    environment.extraInit = ''
-      export DWM_AUTOSTART_DIR="/etc/dwm/autostart/"
-    '';
+    environment.variables = {
+      _JAVA_AWT_WM_NONREPARENTING="1";
+      AWT_TOOLKIT="MToolkit";
+      DWM_AUTOSTART_DIR="/etc/dwm/autostart/";
+    };
 
     environment.etc."dwm/autostart/dwm".source = ./scripts/autostart;
 
