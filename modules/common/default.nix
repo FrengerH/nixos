@@ -1,7 +1,11 @@
 { config, pkgs, lib, ... }:
 
 let
-   userConf = builtins.fromJSON(builtins.readFile("/etc/nixos/username.json"));
+  userConf = builtins.fromJSON(builtins.readFile("/etc/nixos/username.json"));
+  unstable = import
+    (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/nixpkgs-unstable)
+    # reuse the current configuration
+    { config = config.nixpkgs.config; };
 in
   {
     options = with lib.options; {
@@ -83,7 +87,7 @@ in
         nix-direnv
         bat
         zoxide
-        zellij
+        unstable.zellij
         wmctrl
         xdg-user-dirs
         numlockx
