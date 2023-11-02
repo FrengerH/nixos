@@ -44,12 +44,6 @@ if [[ ! -f "$BAT_THEME" ]]; then
     # bat cache --build
 fi
 
-
-DIRENV_FILE="/home/$USER/.direnvrc"
-if [[ ! -f "$DIRENV_FILE" ]]; then
-    echo "source /run/current-system/sw/share/nix-direnv/direnvrc" > $DIRENV_FILE
-fi
-
 yubi=`ps -e | command -v yubikey-touch-detector | wc -l`
 if [ $yubi -gt 0 ]; then
     systemctl --user enable --now yubikey-touch-detector.service

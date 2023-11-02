@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  rofiPkgs = import ./programs/rofi.nix { pkgs = pkgs; };
+  rofiPkgs = import ./programs/rofi.nix { inherit config; inherit pkgs; };
   dwmConfig = import ./overlays/configs/dwm.conf.nix { inherit config; inherit pkgs; };
 in
   {
@@ -73,6 +73,9 @@ in
       rofi
       rofiPkgs.power-menu
       rofiPkgs.launcher
+      rofiPkgs.rofi-ssh
+      rofiPkgs.rofi-ff
+      rofiPkgs.rofi-projects
       pulseaudio
     ];
 

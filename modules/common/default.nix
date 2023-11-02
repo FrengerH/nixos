@@ -83,8 +83,6 @@ in
         nmap
         firefox
         flameshot
-        direnv
-        nix-direnv
         bat
         zoxide
         unstable.zellij
@@ -103,15 +101,15 @@ in
         fish = import ./programs/fish.nix;    
         starship = import ./programs/starship.nix;    
         nm-applet.enable = true;
+        direnv = {
+          enable = true;
+          silent = true;
+          nix-direnv.enable = true;
+        };
       };
-
-      environment.pathsToLink = [
-        "/share/nix-direnv"
-      ];
 
       nixpkgs.overlays = map import [ 
         ./overlays/firefox
-        ./overlays/direnv
       ];
       
     };

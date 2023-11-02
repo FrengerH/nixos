@@ -120,6 +120,8 @@
       bind -M insert \cn accept-autosuggestion
       bind -M insert \cs 'zellij run -f -c -n projects -- ~/work/scripts/selector/result/bin/selector $XDG_CONFIG_HOME; commandline -f repaint-mode'
       bind -M default \cs 'zellij run -f -c -n projects -- ~/work/scripts/selector/result/bin/selector $XDG_CONFIG_HOME; commandline -f repaint-mode'
+      bind -M insert \cw 'zellij run -f -c -n "ssh servers" -- ~/work/scripts/sshsel/result/bin/sshsel $HOME $XDG_CONFIG_HOME; commandline -f repaint-mode'
+      bind -M default \cw 'zellij run -f -c -n "ssh servers" -- ~/work/scripts/sshsel/result/bin/sshsel $HOME $XDG_CONFIG_HOME; commandline -f repaint-mode'
       bind --preset -M insert \cl echo test
       #  bind --erase --preset -M insert \cl echo test
       bind -m insert v 'tmux copy-mode; commandline -f repaint-mode'

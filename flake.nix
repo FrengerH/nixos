@@ -48,7 +48,7 @@
           ./modules/virt-manager
           ./modules/neovim
           ./modules/work
-          ./modules/wireguard
+          # ./modules/wireguard
           ./modules/laptop-hp
           ./modules/yubikey
         ];

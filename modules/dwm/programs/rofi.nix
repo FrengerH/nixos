@@ -1,9 +1,10 @@
-{ pkgs }:
+{ config, pkgs }:
 
 let
   font = (builtins.readFile ../theme/font.rasi);
   colors = (builtins.readFile ../theme/colors.rasi);
   launcherTheme = builtins.toFile "rofi-theme.rasi" (font + colors + builtins.readFile ../theme/rofi-theme.rasi);
+  searchTheme = builtins.toFile "rofi-search.rasi" (font + colors + builtins.readFile ../theme/rofi-search.rasi);
   powerMenuTheme = builtins.toFile "power-menu.rasi" (font + colors + builtins.readFile ../theme/power-menu.rasi);
   confirmTheme = builtins.toFile "confirm.rasi" (font + colors + builtins.readFile ../theme/confirm.rasi);
   askPassTheme = builtins.toFile "askpass.rasi" (font + colors + builtins.readFile ../theme/askpass.rasi);
@@ -11,6 +12,18 @@ in
   {
     launcher = pkgs.writeShellScriptBin "launcher" ''
       rofi -theme ${launcherTheme} -show drun       
+    '';
+
+    rofi-ssh = pkgs.writeShellScriptBin "rofi-ssh" ''
+      rofi -theme ${launcherTheme} -show fb -modi "fb:/home/${config.defaultUser}/work/scripts/rofissh/result/bin/rofissh"
+    '';
+
+    rofi-projects = pkgs.writeShellScriptBin "rofi-projects" ''
+      rofi -theme ${launcherTheme} -kb-custom-1 "Ctrl+s" -show fb -modi "fb:/home/${config.defaultUser}/work/scripts/rofiprojects/result/bin/rofiprojects"
+    '';
+
+    rofi-ff = pkgs.writeShellScriptBin "rofi-ff" ''
+      rofi -theme ${searchTheme} -show fb -modi "fb:/home/${config.defaultUser}/work/scripts/rofiff/result/bin/rofiff"
     '';
 
     power-menu = pkgs.writeShellScriptBin "power-menu" ''
