@@ -2,7 +2,7 @@
   description = "System flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-23.05";
+    nixpkgs.url = "nixpkgs/nixos-23.11";
     hyprland.url = "github:hyprwm/Hyprland";
   };
   
@@ -15,6 +15,9 @@
       config = { 
         allowUnfree = true; 
         pulseaudio = true;
+        # permittedInsecurePackages = [
+        #   "teams-1.5.00.23861"
+        # ];
       };
     };
 
@@ -48,7 +51,7 @@
           ./modules/virt-manager
           ./modules/neovim
           ./modules/work
-          # ./modules/wireguard
+          ./modules/wireguard
           ./modules/laptop-hp
           ./modules/yubikey
         ];

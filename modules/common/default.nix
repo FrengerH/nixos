@@ -42,7 +42,7 @@ in
       services.samba.enable = true;
       services.gvfs.enable = true;
 
-      fonts.fonts = with pkgs; [
+      fonts.packages = with pkgs; [
         fira-code
         (nerdfonts.override { fonts = [ "FiraCode" ]; })
       ];
@@ -75,17 +75,28 @@ in
 
       users.users.${config.defaultUser}.extraGroups = [ "dialout" ];
 
+      services.printing.enable = true;
+      services.avahi = {
+        enable = true;
+        nssmdns = true;
+        openFirewall = true;
+      };
+
       environment.systemPackages = with pkgs; [
+        alsa-utils
+        system-config-printer
+        epson-escpr2
         git
         gcc
         ripgrep
         gimp
         nmap
-        firefox
         flameshot
         bat
         zoxide
         unstable.zellij
+        unstable.ollama
+        # (callPackage unstable.ollama.override { llama-cpp = (unstable.llama-cpp.override {cudaSupport = true; openblasSupport = false; }); })
         wmctrl
         xdg-user-dirs
         numlockx
@@ -95,11 +106,14 @@ in
         catppuccin-gtk
         any-nix-shell
         gnome.gnome-disk-utility
+        jq
+        yq
       ];
 
       programs = {
         fish = import ./programs/fish.nix;    
         starship = import ./programs/starship.nix;    
+        firefox = import ./programs/firefox.nix{inherit pkgs;};
         nm-applet.enable = true;
         direnv = {
           enable = true;
@@ -108,9 +122,9 @@ in
         };
       };
 
-      nixpkgs.overlays = map import [ 
-        ./overlays/firefox
-      ];
+      # nixpkgs.overlays = map import [ 
+      #   ./overlays/firefox
+      # ];
       
     };
   }

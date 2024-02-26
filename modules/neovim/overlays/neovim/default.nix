@@ -27,13 +27,13 @@ in
       configure = {
         customRC = ''
           :set termguicolors
+          luafile ${keymaps}
           luafile ${cmp}
           luafile ${colorizer}
           luafile ${colorscheme}
           luafile ${commentary}
           luafile ${debug}
           luafile ${gitsigns}
-          luafile ${keymaps}
           luafile ${lightline}
           luafile ${lsp}
           luafile ${options}

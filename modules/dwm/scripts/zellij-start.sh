@@ -5,7 +5,8 @@ terminals=$(wmctrl -l | grep 'Zellij (base)' | wc -l)
 if [ $terminals -lt 1 ];
 then
     ses=$(zellij list-sessions | grep 'base' | awk '{ print $1 }')
-    if [ "$ses" == "base" ];
+    base="base"
+    if [[ "$ses" == *"$base"* ]];
     then
         zellij attach base
     else

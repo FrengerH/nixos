@@ -8,10 +8,22 @@ let
     fi
     virt-viewer -c virt-viewer -c qemu:///session --domain-name nixos -f -w
   '';
+  nixos-bug = pkgs.writeShellScriptBin "nixos-bug" ''
+    state=`virsh dominfo bug | grep 'State:' | awk '{ print $2 }'`
+    if [ "$state" != "running" ]; then
+      virsh start bug
+    fi
+    virt-viewer -c virt-viewer -c qemu:///session --domain-name bug -f -w
+  '';
   nixos-vm-desktop = (pkgs.makeDesktopItem {
     name = "nixos-vm";
     desktopName = "Nixos vm";
     exec = "nixos-vm";
+  });
+  nixos-bug-desktop = (pkgs.makeDesktopItem {
+    name = "nixos-bug";
+    desktopName = "Nixos bug";
+    exec = "nixos-bug";
   });
 in
   {
@@ -27,6 +39,8 @@ in
       dconf
       nixos-vm
       nixos-vm-desktop
+      nixos-bug
+      nixos-bug-desktop
     ];
 
     virtualisation.spiceUSBRedirection.enable = true;

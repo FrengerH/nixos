@@ -20,6 +20,7 @@
   shellInit = ''
     zoxide init fish | source
     set -gx XDG_CONFIG_HOME ~/.config/
+    set -gx DOCKER_BUILDKIT 1
 
     set -g fish_term24bit 1
 

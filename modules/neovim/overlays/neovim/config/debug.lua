@@ -21,9 +21,9 @@ dap.configurations.php = {
     type = 'php',
     request = 'launch',
     name = 'Listen for Xdebug',
-    port = 9000,
+    port = 9003,
     log = true,
-    serverSourceRoot = '/var/www/',
+    serverSourceRoot = '/app/',
     localSourceRoot = vim.fn.getcwd()
   }
 }

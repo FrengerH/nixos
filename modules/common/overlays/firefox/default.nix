@@ -149,6 +149,10 @@ in
         };
         Preferences = ''
           {
+            "browser.requireSigning": {
+              "Value": false,
+              "Status": "default"
+            },
             "browser.urlbar.suggest.bookmark": {
               "Value": true,
               "Status": "default"

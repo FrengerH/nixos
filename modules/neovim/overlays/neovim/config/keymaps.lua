@@ -16,6 +16,7 @@ vim.keymap.set("n", "<leader>pi", ":PlugInstall<cr>")
 vim.keymap.set("n", "<leader>e", ":Ex<cr>")
 
 vim.keymap.set("n", "Y", "yg$")
+vim.keymap.set("n", "D", "dg$")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 

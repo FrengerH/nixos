@@ -57,7 +57,7 @@ in {
     const char *spcmd1[] = {"st", "-T", "st-scratchpad", NULL };
     const char *spcmd2[] = {"st", "-T", "Spotify-tui", "-e", "spt", NULL };
     const char *spcmd3[] = {"st", "-T", "Calculator", "-e", "rink", NULL };
-    const char *spcmd4[] = {"st", "-T", "Notes", "-g", "80x24", "-e", "nvim", "${notesFile}", NULL };
+    const char *spcmd4[] = {"st", "-T", "Notes", "-g", "80x24", "-e", "nvim", "${notesFile}", "-c", "norm G", NULL };
     const char *spcmd5[] = {"pavucontrol", NULL};
     /*
     const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
@@ -96,7 +96,7 @@ in {
             { "VirtualBox Manager",        NULL,              NULL,                     1 << 5,       0,           -1 },
             { "Virt-manager",              NULL,              NULL,                     1 << 5,       0,           -1 },
             { "org.remmina.Remmina",       NULL,              NULL,                     1 << 5,       0,           -1 },
-            { "Microsoft Teams - Preview", NULL,              NULL,                     1 << 6,       0,           -1 },
+            { "teams-for-linux",           NULL,              NULL,                     1 << 6,       0,           -1 },
             { "Code",                      NULL,              NULL,                     1 << 7,       0,           -1 },
             { "Sublime_text",              NULL,              NULL,                     1 << 8,       0,           -1 },
             { NULL,                        NULL,              "Volume Control",         SPTAG(4),     1,           -1 },
