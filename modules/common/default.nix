@@ -29,19 +29,19 @@ in
       notesDir = "/home/${config.defaultUser}/notes";
 
       boot.supportedFilesystems = [ "ntfs" ];
-      boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+#      boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
       boot.initrd.supportedFilesystems = [ "nfs" ];
       boot.initrd.availableKernelModules = [ "nfs" ];
 
-      fileSystems."/mnt/nfs" = {
-        device = "192.168.123.149:/media";   # replace with server details
-        fsType = "nfs";                            # or "nfs4" for NFSv4
-        options = [
-          "rw"
-          "hard"
-          "nfsvers=3"
-        ];
-      };
+#      fileSystems."/mnt/nfs" = {
+#        device = "192.168.123.149:/media";   # replace with server details
+#        fsType = "nfs";                            # or "nfs4" for NFSv4
+#        options = [
+#          "rw"
+#          "hard"
+#          "nfsvers=3"
+#        ];
+#      };
 
       nix.settings.auto-optimise-store = true;
 
@@ -88,6 +88,14 @@ in
       environment.etc."zellij/layouts/main.kdl".source = ./overlays/configs/zellij.layout.kdl;
       environment.etc."zellij/plugins/custom-compact-bar.wasm".source = ./scripts/compact-bar.wasm;
 
+      # Create symlink for user zellij config to use Nix-managed config
+      system.activationScripts.zellijConfig = ''
+        mkdir -p /home/${config.defaultUser}/.config/zellij
+        rm -f /home/${config.defaultUser}/.config/zellij/config.kdl
+        ln -sf /etc/zellij/config.kdl /home/${config.defaultUser}/.config/zellij/config.kdl
+        chown -h ${config.defaultUser}:users /home/${config.defaultUser}/.config/zellij/config.kdl
+      '';
+
       users.users.${config.defaultUser}.extraGroups = [ "dialout" ];
 
       services.printing.enable = true;
@@ -111,7 +119,7 @@ in
         flameshot
         old.libreoffice
         bat
-        sweethome3d.application
+#        sweethome3d.application
         zoxide
         unstable.zellij
         unstable.ollama

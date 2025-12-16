@@ -1,6 +1,3 @@
-local status, nvim_lsp = pcall(require, "lspconfig")
-if (not status) then return end
-
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 local enable_format_on_save = function(_, bufnr)
     vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
@@ -32,25 +29,24 @@ local on_attach = function(_, bufnr)
     vim.keymap.set(
         'n', '<leader>so', require('telescope.builtin').lsp_document_symbols, opts
     )
-    vim.api.nvim_create_user_command("Format", vim.lsp.buf.formatting, {})
+    vim.api.nvim_create_user_command("Format", function() vim.lsp.buf.format() end, {})
 end
 
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
--- nvim_lsp['psalm'].setup {
---     -- cmd = { 'psalm --language-server' },
---     on_attach = on_attach,
---     capabilities = capabilities,
--- }
-
-nvim_lsp['intelephense'].setup {
-    on_attach = on_attach,
+-- Configure LSP servers using new vim.lsp.config API
+vim.lsp.config.intelephense = {
+    cmd = { 'intelephense', '--stdio' },
+    filetypes = { 'php' },
+    root_markers = { 'composer.json', '.git' },
     capabilities = capabilities,
 }
 
-nvim_lsp['pylsp'].setup {
-    on_attach = on_attach,
+vim.lsp.config.pylsp = {
+    cmd = { 'pylsp' },
+    filetypes = { 'python' },
+    root_markers = { 'pyproject.toml', 'setup.py', '.git' },
     capabilities = capabilities,
     settings = {
         pylsp = {
@@ -65,58 +61,45 @@ nvim_lsp['pylsp'].setup {
     }
 }
 
--- nvim_lsp['pylyzer'].setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---     settings = {
---         python = {
---             checkOnType = false,
---             diagnostics = true,
---             inlayHints = true,
---             smartCompletion = true
---         }
---     }
--- }
-
-nvim_lsp['rnix'].setup {
-    on_attach = on_attach,
-    filetypes = { "nix" },
-    cmd = { "rnix-lsp" },
+vim.lsp.config.rnix = {
+    cmd = { 'rnix-lsp' },
+    filetypes = { 'nix' },
+    root_markers = { 'flake.nix', 'default.nix', '.git' },
     capabilities = capabilities
 }
 
-nvim_lsp['nixd'].setup {
-    on_attach = on_attach,
-    filetypes = { "nix" },
-    cmd = { "nixd" },
+vim.lsp.config.nixd = {
+    cmd = { 'nixd' },
+    filetypes = { 'nix' },
+    root_markers = { 'flake.nix', 'default.nix', '.git' },
     capabilities = capabilities
 }
 
-nvim_lsp['rust_analyzer'].setup {
-    on_attach = on_attach,
+vim.lsp.config.rust_analyzer = {
+    cmd = { 'rust-analyzer' },
+    filetypes = { 'rust' },
+    root_markers = { 'Cargo.toml', '.git' },
     capabilities = capabilities
 }
 
-nvim_lsp['clangd'].setup {
-    on_attach = on_attach,
+vim.lsp.config.clangd = {
+    cmd = { 'clangd' },
+    filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
+    root_markers = { 'compile_commands.json', '.git' },
     capabilities = capabilities
 }
 
-nvim_lsp['lua_ls'].setup {
+vim.lsp.config.lua_ls = {
+    cmd = { 'lua-language-server' },
+    filetypes = { 'lua' },
+    root_markers = { '.luarc.json', '.git' },
     capabilities = capabilities,
-    on_attach = function(client, bufnr)
-        on_attach(client, bufnr)
-        enable_format_on_save(client, bufnr)
-    end,
     settings = {
         Lua = {
             diagnostics = {
-                -- Get the language server to recognize the `vim` global
                 globals = { 'vim' },
             },
-
             workspace = {
-                -- Make the server aware of Neovim runtime files
                 library = vim.api.nvim_get_runtime_file("", true),
                 checkThirdParty = false
             },
@@ -124,10 +107,40 @@ nvim_lsp['lua_ls'].setup {
     },
 }
 
-nvim_lsp['arduino_language_server'].setup {
-    on_attach = on_attach,
+vim.lsp.config.arduino_language_server = {
+    cmd = { 'arduino-language-server' },
+    filetypes = { 'arduino' },
+    root_markers = { '*.ino', '.git' },
     capabilities = capabilities
 }
+
+-- Enable LSP servers automatically on file open
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'php', 'python', 'nix', 'rust', 'c', 'cpp', 'lua', 'arduino' },
+    callback = function(args)
+        local clients = {
+            php = 'intelephense',
+            python = 'pylsp',
+            nix = 'nixd',
+            rust = 'rust_analyzer',
+            c = 'clangd',
+            cpp = 'clangd',
+            lua = 'lua_ls',
+            arduino = 'arduino_language_server'
+        }
+
+        local server = clients[args.match]
+        if server then
+            vim.lsp.enable(server)
+            on_attach(nil, args.buf)
+
+            -- Enable format on save for lua_ls
+            if server == 'lua_ls' then
+                enable_format_on_save(nil, args.buf)
+            end
+        end
+    end
+})
 
 -- lsp_installer.on_server_ready(function(server)
 --     local opts = {

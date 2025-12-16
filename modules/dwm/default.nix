@@ -34,7 +34,7 @@ in
 
     services.xserver.enable = true;
     services.xserver.displayManager = {
-      # defaultSession = "none+dwm";
+      defaultSession = "none+dwm";
       lightdm = {
         enable = true;
         background = "/etc/wallpaper/wallpaper.jpg";

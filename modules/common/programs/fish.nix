@@ -23,6 +23,7 @@
     set -gx XDG_CONFIG_HOME ~/.config/
     set -gx DOCKER_BUILDKIT 1
     set -gx PATH $PATH $HOME/.krew/bin
+    set -gx ZELLIJ_CONFIG_FILE /etc/zellij/config.kdl
 
     set -g fish_term24bit 1
 
