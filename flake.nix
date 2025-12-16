@@ -2,7 +2,7 @@
   description = "System flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-23.11";
+    nixpkgs.url = "nixpkgs/nixos-25.11";
     hyprland.url = "github:hyprwm/Hyprland";
   };
   
@@ -35,7 +35,7 @@
           ./modules/common
           ./modules/vm
           ./modules/neovim
-          ./modules/wireguard
+          # ./modules/wireguard
         ];
 
         specialArgs = { inherit inputs; };

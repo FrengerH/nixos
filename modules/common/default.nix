@@ -6,6 +6,9 @@ let
     (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/nixpkgs-unstable)
     # reuse the current configuration
     { config = config.nixpkgs.config; };
+  old = import (builtins.fetchTarball {
+        url = "https://github.com/NixOS/nixpkgs/archive/5a83f6f984f387d47373f6f0c43b97a64e7755c0.tar.gz";
+  }) {};
 in
   {
     options = with lib.options; {
@@ -27,6 +30,18 @@ in
 
       boot.supportedFilesystems = [ "ntfs" ];
       boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+      boot.initrd.supportedFilesystems = [ "nfs" ];
+      boot.initrd.availableKernelModules = [ "nfs" ];
+
+      fileSystems."/mnt/nfs" = {
+        device = "192.168.123.149:/media";   # replace with server details
+        fsType = "nfs";                            # or "nfs4" for NFSv4
+        options = [
+          "rw"
+          "hard"
+          "nfsvers=3"
+        ];
+      };
 
       nix.settings.auto-optimise-store = true;
 
@@ -44,7 +59,7 @@ in
 
       fonts.packages = with pkgs; [
         fira-code
-        (nerdfonts.override { fonts = [ "FiraCode" ]; })
+        nerd-fonts.fira-code
       ];
 
       environment.etc."xdg/gtk-3.0/settings.ini" = {
@@ -78,11 +93,13 @@ in
       services.printing.enable = true;
       services.avahi = {
         enable = true;
-        nssmdns = true;
+        nssmdns4 = true;
         openFirewall = true;
       };
 
       environment.systemPackages = with pkgs; [
+        nfs-utils
+        unstable.obsidian
         alsa-utils
         system-config-printer
         epson-escpr2
@@ -92,7 +109,9 @@ in
         gimp
         nmap
         flameshot
+        old.libreoffice
         bat
+        sweethome3d.application
         zoxide
         unstable.zellij
         unstable.ollama
@@ -100,14 +119,15 @@ in
         wmctrl
         xdg-user-dirs
         numlockx
-        cinnamon.nemo-with-extensions
+        nemo-with-extensions
         xorg.xrandr
         dracula-theme
         catppuccin-gtk
         any-nix-shell
-        gnome.gnome-disk-utility
+        gnome-disk-utility
         jq
         yq
+        claude-code
       ];
 
       programs = {

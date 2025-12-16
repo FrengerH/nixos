@@ -1,6 +1,7 @@
 {
   enable = true;
   shellAliases = {
+    c="clear";
     l="ls -lvh";
     ll="ls -lvAh";
 
@@ -21,6 +22,7 @@
     zoxide init fish | source
     set -gx XDG_CONFIG_HOME ~/.config/
     set -gx DOCKER_BUILDKIT 1
+    set -gx PATH $PATH $HOME/.krew/bin
 
     set -g fish_term24bit 1
 

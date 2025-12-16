@@ -13,12 +13,15 @@ in
       kubernetes-helm
       helmfile
       docker-compose
-    ]; 
+      p7zip
+    ];
+
+    networking.firewall.checkReversePath = false;
 
     virtualisation.docker.enable = true;
     users.users.${config.defaultUser}.extraGroups = [ "docker" ];
 
-    services.xserver.displayManager.autoLogin = {
+    services.displayManager.autoLogin = {
       enable = true;
       user = config.defaultUser;
     };
@@ -51,13 +54,13 @@ in
 
     services.qemuGuest.enable = true;
     services.spice-vdagentd.enable = true;
-    fileSystems = mkIf (config.defaultUser or "" != "") {
-      "/home/${config.defaultUser}/vmshare"= {
-        device = "vmshare";
-        fsType = "9p";
-        options = [ "trans=virtio" "version=9p2000.L" ];
-      };
-    };
+    # fileSystems = mkIf (config.defaultUser or "" != "") {
+    #   "/home/${config.defaultUser}/vmshare"= {
+    #     device = "vmshare";
+    #     fsType = "9p";
+    #     options = [ "trans=virtio" "version=9p2000.L" ];
+    #   };
+    # };
 
     services.autorandr.profiles = {
         "vm-min" = {

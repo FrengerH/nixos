@@ -9,14 +9,14 @@ in
   {
     environment.variables.EDITOR = "nvim";
     environment.systemPackages = with pkgs; [
-      clang-tools_14
+      clang-tools
       fzf
       neovim
-      rnix-lsp
-      sumneko-lua-language-server
+      # rnix-lsp
+      lua-language-server
       php82Packages.psalm
-      python310Packages.python-lsp-server
-      python310Packages.pylsp-mypy
+      python312Packages.python-lsp-server
+      python312Packages.pylsp-mypy
       unstable.nixd
     ];
 

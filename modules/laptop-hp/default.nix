@@ -26,6 +26,7 @@ in
     hardware.bluetooth.enable = true;
     services.blueman.enable = true;
 
+    boot.kernelPackages = pkgs.linuxPackages_6_1;
 
     environment.etc."wpa_supplicant/wpa_supplicant.conf".source = ./wpa_supplicant/wpa_supplicant.conf;
 
